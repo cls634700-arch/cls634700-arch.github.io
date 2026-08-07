@@ -1,4 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- 🔴 이 줄이 없으면 실제 폰에서 980px로 가정해 축소 렌더된다 (2026-08-07 추가) -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI 카드뉴스 만들기 — 실전 매뉴얼</title>
+<meta name="description" content="포토샵 없이, 외주비 없이. 무료 AI 도구로 카드뉴스 8장 세트를 만드는 법을 전부 적었습니다. 프롬프트 30종 · 컬러/폰트 조합표 · 발행 전 체크리스트 포함.">
+<link rel="canonical" href="https://cls634700-arch.github.io/">
+<meta name="theme-color" content="#FFE020">
+
+<!-- 링크 미리보기 카드 (스레드·카톡·인스타 DM에 붙일 때 뜨는 것) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="클릭랩스튜디오">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://cls634700-arch.github.io/">
+<meta property="og:title" content="디자인 못 해도 카드뉴스는 만들 수 있습니다">
+<meta property="og:description" content="포토샵 없이, 외주비 없이. 무료 AI 도구로 8장 세트를 만드는 법 — 프롬프트 30종 포함. PDF 2권 19,900원.">
+<meta property="og:image" content="https://cls634700-arch.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI 카드뉴스 만들기 — 실전 매뉴얼 표지">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="디자인 못 해도 카드뉴스는 만들 수 있습니다">
+<meta name="twitter:description" content="포토샵 없이, 외주비 없이. 무료 AI 도구로 8장 세트를 만드는 법 — 프롬프트 30종 포함.">
+<meta name="twitter:image" content="https://cls634700-arch.github.io/og.png">
 
 <style>
   /* ─────────────────────────────────────────────
@@ -341,7 +366,89 @@
     .strip__track { animation: none; }
     .rise, .hero-seq > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
   }
+  /* ── 계좌 공개 버튼 · 문의 폼 (2026-08-07) ── */
+  .revealbtn {
+    align-self: flex-start;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--sun);
+    background: var(--ink);
+    border: 0;
+    border-radius: 4px;
+    padding: .78em 1.5em;
+    cursor: pointer;
+    letter-spacing: -.01em;
+    transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: 4px 4px 0 rgba(20,22,28,.22);
+  }
+  .revealbtn:hover  { transform: translate(-1px,-1px); box-shadow: 6px 6px 0 rgba(20,22,28,.26); }
+  .revealbtn:active { transform: translate(2px,2px);   box-shadow: 1px 1px 0 rgba(20,22,28,.22); }
+  .revealbtn:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+
+  #acctOut {
+    font-size: 1.18rem;
+    letter-spacing: -.01em;
+    background: linear-gradient(transparent 58%, rgba(255,224,32,.85) 58%);
+    align-self: flex-start;
+    cursor: pointer;
+  }
+
+  .askform {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    border: 2px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.3rem 1.35rem 1.45rem;
+    background: var(--block-quiet);
+  }
+  .askform label {
+    display: flex;
+    flex-direction: column;
+    gap: .38rem;
+    font-size: .9rem;
+    font-weight: 800;
+    letter-spacing: -.01em;
+  }
+  .askform input[type="text"],
+  .askform input[type="email"],
+  .askform textarea {
+    font-family: inherit;
+    font-size: 1rem;              /* 🔴 16px 미만이면 iOS가 입력 시 화면을 확대한다 */
+    font-weight: 500;
+    color: var(--fg);
+    background: var(--bg);
+    border: 2px solid var(--rule);
+    border-radius: 4px;
+    padding: .68em .8em;
+    width: 100%;
+    resize: vertical;
+  }
+  .askform input:focus, .askform textarea:focus {
+    outline: 0;
+    border-color: var(--cobalt);
+  }
+  .sendbtn {
+    font-family: inherit;
+    font-size: 1.02rem;
+    font-weight: 900;
+    color: var(--ink);
+    background: var(--sun);
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    padding: .8em 1em;
+    cursor: pointer;
+    margin-top: .15rem;
+  }
+  .sendbtn:hover     { background: #FFE84D; }
+  .sendbtn[disabled] { opacity: .55; cursor: progress; }
+  .honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .formnote { margin-top: .1rem; }
+  .link { color: inherit; font-weight: 800; text-underline-offset: 3px; }
 </style>
+</head>
+<body>
 
 <!-- ─────────────  CARD 01 · 커버  ───────────── -->
 <section class="card card--sun">
@@ -469,21 +576,44 @@
   <div class="inner rise">
     <p class="eyebrow">사는 법</p>
     <h2>계좌이체 후<br>메시지 주시면<br>바로 보내드립니다</h2>
+    <!-- 계좌는 소스에 평문으로 두지 않는다 (수집 봇·검색 색인 방지). 클릭 시 JS가 복원 — 2026-08-07 -->
     <div class="pay">
       <p class="small">입금 계좌</p>
-      <strong><span class="fill">새마을금고 9003-2938-7166-2 (예금주: 유재훈)</span></strong>
+      <button type="button" class="revealbtn" id="revealBtn"
+              data-v="7IOI66eI7J2E6riI6rOgIDkwMDMtMjkzOC03MTY2LTIgKOyYiOq4iOyjvDog7Jyg7J6s7ZuIKQ==">
+        계좌번호 보기
+      </button>
+      <strong id="acctOut" hidden></strong>
+      <p class="small" id="acctCopied" hidden>복사했습니다. 입금 후 아래 폼으로 알려주세요.</p>
     </div>
+
     <ol class="steps">
-      <li>위 계좌로 <strong>19,900원</strong> 입금</li>
-      <li>입금자명과 <strong>파일 받을 이메일</strong>을 아래 연락처로 보내주세요</li>
+      <li>위 버튼을 눌러 나온 계좌로 <strong>19,900원</strong> 입금</li>
+      <li>아래 <strong>문의 폼</strong>에 입금자명과 파일 받을 이메일을 남겨주세요</li>
       <li>확인되는 대로 PDF 2개(본문 + 프롬프트팩)를 보내드립니다</li>
     </ol>
-    <div class="pay">
-      <p class="small">연락처</p>
-      <strong><span class="fill">문자 010-7627-3619</span></strong>
-      <p class="small">"미리보기 주세요" 문자만 보내셔도 됩니다. 통화 어려우면 문자로 주세요.</p>
-    </div>
-    <p class="small">보통 몇 시간 안에, 늦어도 하루 안에는 보내드립니다. 답이 없으면 다시 한 번 연락 주세요.</p>
+
+    <!-- 문의 폼 — 전화번호를 노출하지 않고 메시지를 받는 창구. action은 JS가 주입(이메일 수집 방지) -->
+    <form class="askform" id="askForm" method="POST" data-to="Y2xzNjM0NzAwQGdtYWlsLmNvbQ==">
+      <p class="eyebrow">문의 · 구매 알림</p>
+      <label>성함 또는 입금자명
+        <input type="text" name="이름" required autocomplete="name" placeholder="홍길동">
+      </label>
+      <label>파일 받을 이메일
+        <input type="email" name="회신받을이메일" required autocomplete="email" placeholder="you@example.com">
+      </label>
+      <label>남길 말 <span class="small">(구매 전 질문도 환영합니다)</span>
+        <textarea name="내용" rows="3" placeholder="입금했습니다 / 미리보기 먼저 볼 수 있을까요?"></textarea>
+      </label>
+      <input type="hidden" name="_subject" value="[판매페이지] 새 문의">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="sendbtn">보내기</button>
+      <p class="small formnote" id="formNote">받는 즉시 확인합니다. 보통 몇 시간 안에, 늦어도 하루 안에 답을 드립니다.</p>
+    </form>
+
+    <p class="small">폼이 불편하시면 스레드로 주셔도 됩니다 — <a class="link" href="https://www.threads.com/@heitzz" target="_blank" rel="noopener">@heitzz</a></p>
   </div>
 </section>
 
@@ -542,4 +672,49 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.rise').forEach(function (el) { io.observe(el); });
   })();
+
+  // ── 계좌 공개 (평문을 소스에 두지 않으려고 JS로 복원) ──
+  (function () {
+    var dec = function (s) {
+      return new TextDecoder().decode(Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }));
+    };
+    var btn = document.getElementById('revealBtn');
+    var out = document.getElementById('acctOut');
+    var copied = document.getElementById('acctCopied');
+    if (!btn || !out) return;
+
+    btn.addEventListener('click', function () {
+      var v = dec(btn.dataset.v);
+      out.textContent = v;
+      out.hidden = false;
+      btn.hidden = true;
+      out.title = '눌러서 복사';
+      // 계좌는 손으로 옮겨 적다 틀리기 쉬우니 눌러서 복사되게
+      out.addEventListener('click', function () {
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(v).then(function () {
+          if (copied) copied.hidden = false;
+        });
+      });
+    });
+  })();
+
+  // ── 문의 폼: action을 여기서 붙인다 (정적 소스에 주소를 남기지 않으려고) ──
+  (function () {
+    var f = document.getElementById('askForm');
+    if (!f) return;
+    var dec = function (s) {
+      return new TextDecoder().decode(Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }));
+    };
+    f.action = 'https://formsubmit.co/' + dec(f.dataset.to);
+
+    f.addEventListener('submit', function (e) {
+      if (f._honey && f._honey.value) { e.preventDefault(); return; }   // 봇이 채우면 전송 안 함
+      var b = f.querySelector('.sendbtn');
+      if (b) { b.disabled = true; b.textContent = '보내는 중…'; }
+    });
+  })();
 </script>
+
+</body>
+</html>
