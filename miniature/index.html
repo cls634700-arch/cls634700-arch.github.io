@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>미니어처 영상 프롬프트 — 이미지 + 영상, 하는 순서까지</title>
+<meta name="description" content="미니어처 영상 만드는 이미지 프롬프트와 영상 프롬프트, 하는 순서까지. 아무 건축물이나 넣는 공용 템플릿 포함.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="미니어처 영상 프롬프트 — 이미지 + 영상, 하는 순서까지">
+<meta property="og:description" content="미니어처 영상 만드는 이미지 프롬프트와 영상 프롬프트, 하는 순서까지. 아무 건축물이나 넣는 공용 템플릿 포함.">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C; --dim:#6E665A;
+  --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8; --dim:#9A9184;
+         --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+}
+:root[data-theme="dark"]{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8;
+  --dim:#9A9184; --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+:root[data-theme="light"]{ --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C;
+  --dim:#6E665A; --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif;
+  line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:36px 18px 100px}
+.chbanner{margin:0 0 22px}
+.chbanner .kk,.chbanner .nm{display:none}
+h1{font-size:clamp(23px,5vw,31px);line-height:1.35;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(18px,4vw,22px);margin:50px 0 14px;padding-top:22px;
+   border-top:1px solid var(--line);letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16.5px;margin:30px 0 10px;color:var(--accent)}
+h4{font-size:15.5px;margin:22px 0 8px}
+p{margin:14px 0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+blockquote{margin:18px 0;padding:12px 16px;background:var(--panel);
+  border-left:3px solid var(--accent);border-radius:0 8px 8px 0;color:var(--dim);font-size:15px}
+blockquote.warn{border-left-color:var(--warn)}
+ul,ol{padding-left:22px;margin:14px 0}
+li{margin:6px 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);
+  border:1px solid var(--line);padding:1px 5px;border-radius:4px;word-break:break-all}
+.tw{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:340px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600;color:var(--dim);white-space:nowrap}
+td code{background:transparent;border:0;padding:0}
+.codewrap{margin:18px 0;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.codebar{display:flex;justify-content:space-between;align-items:center;
+  background:var(--panel);padding:7px 12px;font-size:12.5px;color:var(--dim)}
+.len{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.copy{font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--accent);
+  background:transparent;color:var(--accent);padding:5px 16px;border-radius:99px;
+  min-height:32px;transition:background .15s,color .15s}
+.copy:hover,.copy.done{background:var(--accent);color:#fff}
+pre{margin:0;background:var(--code-bg);color:var(--code-ink);padding:16px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre code{font-family:var(--mono);font-size:13px;line-height:1.62;background:transparent;
+  border:0;padding:0;white-space:pre;word-break:normal;color:inherit}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--dim)}
+@media (max-width:520px){ .wrap{padding:26px 14px 80px} pre code{font-size:12px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="chbanner"><h1>실전 04. 미니어처 영상 — 이미지 프롬프트 + 영상 프롬프트</h1></div>
+<p>미니어처 영상은 프롬프트 <strong>한 개</strong>로 만들지 않는다. <strong>두 개</strong>가 필요하고, 순서가 정해져 있다.<br>먼저 이미지 프롬프트로 첫 프레임을 만들고, 그 이미지를 영상 모델에 넣으면서 영상 프롬프트를 준다.<br>이 순서를 바꾸면 결과가 흔들리고 돈이 샌다.</p>
+<p>이 문서에는 두 가지가 들어 있다.</p>
+<ul>
+<li><strong>공용 템플릿</strong> — 빈칸만 바꾸면 성당·등대·아파트·카페 무엇이든 만들 수 있다 (§1-A)</li>
+<li><strong>완성 예시 6종</strong> — 실제로 영상이 나온 프롬프트 원문 그대로 (§1-D, §2)</li>
+</ul>
+<p>여기 실린 프롬프트는 전부 <strong>실제로 돌려서 영상이 나온 것</strong>이고,<br>템플릿은 문서에 없는 건축물(등대)로 다시 채워 검증했다(§1-C).<br>잘 안 되는 지점과 우리가 걸린 함정도 숨기지 않고 적었다(§3, §8).</p>
+<h3>목차</h3>
+<div class="tw"><table><thead><tr><th>절</th><th>내용</th></tr></thead><tbody><tr><td>§0</td><td><strong>순서</strong> — 무엇을 먼저 하나 (5단계) · 어디에 넣나</td></tr><tr><td>§1-A</td><td><strong>공용 템플릿</strong> — 이미지 틀 · 영상 틀 · 공용 네거티브 블록</td></tr><tr><td>§1-B</td><td>빈칸 채우는 법 + <strong>건축물 10종 시공 순서표</strong></td></tr><tr><td>§1-C</td><td><strong>따라해보기</strong> — 등대 하나를 처음부터 채우는 전 과정</td></tr><tr><td>§1-D</td><td>이미지 프롬프트 완성 예시 3종</td></tr><tr><td>§2</td><td>영상 프롬프트 완성 예시 3종</td></tr><tr><td>§3</td><td>크레딧 쓰기 전 함정 6가지</td></tr><tr><td>§4</td><td>프롬프트 길이 줄이는 법</td></tr><tr><td>§5</td><td>주제별 응용</td></tr><tr><td>§6</td><td>실패 증상별 처방</td></tr><tr><td>§7</td><td>실제 생성 설정</td></tr><tr><td>§8</td><td>이 자료를 그대로 복붙해 재현한 결과</td></tr></tbody></table></div>
+<p><strong>처음 보는 사람은 §0 → §1-C 순으로 읽으면 된다.</strong> 따라해보기 한 번이면 감이 온다.</p>
+<hr>
+<h2>0. 순서 — 이대로 하면 된다</h2>
+<p><strong>1단계 · 첫 프레임 이미지를 만든다</strong><br>§1-A의 틀에 값을 채우거나(§1-B·§1-C 참고), §1-D의 완성 예시를 그대로 복사해 이미지 생성 AI에 넣는다. 여기서 <strong>재질·손·조명·구도·비율</strong>이 결정된다.<br>이 한 장이 영상 전체의 기준이 되므로, 마음에 들 때까지 이미지만 반복한다.</p>
+<p><strong>2단계 · 이미지가 마음에 들 때까지 여기서 끝낸다</strong><br>이미지는 싸고 영상은 비싸다. 영상으로 넘어간 뒤 마음에 안 들면 영상값을 통째로 날린다.<br>손 모양이 이상하거나 스케일이 안 맞으면 <strong>여기서</strong> 고친다.</p>
+<p><strong>3단계 · 영상 프롬프트의 글자수를 센다</strong><br>공백·문장부호 포함으로 센다. 모델마다 상한이 다르고 <strong>어디에도 안 적혀 있다</strong>(§3 참조).<br>길면 §4의 방법으로 줄인 다음 넘어간다.</p>
+<p><strong>4단계 · 1단계 이미지를 시작 프레임으로 넣고 영상을 만든다</strong><br>영상 모델의 시작 이미지(start image / first frame) 칸에 1단계 결과를 넣고, §1-A의 영상 틀(또는 §2의 완성 예시)을 준다.<br>프롬프트 첫 줄에 "첫 프레임에서 이어간다"는 잠금 문장이 반드시 들어가야 한다.</p>
+<p><strong>5단계 · 예쁨보다 먼저 이걸 본다</strong><br>공정 순서를 건너뛰지 않았는지 · 재질이 도중에 바뀌지 않았는지 · 놓아둔 소품이 사라지지 않았는지 ·<br>손과 도구의 크기가 유지되는지 · 카메라가 흔들리지 않는지. 틀린 항목만 프롬프트에 한 줄씩 보강한다.</p>
+<blockquote>15초 영상 하나가 보통 8~10개의 비트(장면 단위)로 쪼개진다. 아래 프롬프트가 그 비트를 초 단위로 지정한다.</blockquote>
+<h3>어디에 넣나</h3>
+<div class="tw"><table><thead><tr><th>단계</th><th>필요한 것</th><th>예</th></tr></thead><tbody><tr><td>1단계</td><td><strong>사진처럼 나오는 이미지 AI</strong> 아무거나</td><td>Z Image · GPT Image · Midjourney · Flux 등</td></tr><tr><td>4단계</td><td><strong>시작 이미지를 받는 영상 AI</strong></td><td>Seedance 2.0 · Veo 3.1 · Kling 3.0 · Wan 등</td></tr></tbody></table></div>
+<p>아래 프롬프트는 <strong>Seedance 2.0</strong>으로 돌린 것이지만, 특정 서비스 전용 문법이 하나도 없다.<br>전부 평범한 영문 서술이라 시작 이미지를 받는 영상 AI면 어디든 그대로 들어간다.<br>무료로 쓸 수 있는 영상 AI에 넣어도 같은 구조로 나온다 — 화질과 길이만 서비스에 따라 달라진다.</p>
+<p><strong>중요한 건 "시작 이미지(start image / first frame) 칸이 있는 모델"을 고르는 것이다.</strong><br>그 칸이 없으면 아무리 프롬프트를 잘 써도 첫 프레임이 잠기지 않아 매번 다른 그림이 나온다.</p>
+<hr>
+<h2>1-A. 공용 템플릿 — 아무 건축물이나 넣는다</h2>
+<p>아래 §1-D의 완성 예시 3종은 <strong>이 틀에 값을 채운 결과</strong>다.<br>성당·등대·아파트·카페·창고 무엇이든 같은 틀에 넣으면 된다. 대괄호만 바꾼다.</p>
+<h3>이미지 프롬프트 틀</h3>
+<div class="codewrap"><div class="codebar"><span class="len">584자</span><button class="copy" type="button" data-t="c0">복사</button></div><pre id="c0"><code>Ultra realistic macro photography, vertical 9:16 aspect ratio, miniature construction site for [건축물 — 평면 형태와 층수까지 적는다].
+Ground and surroundings: [바닥·주변].
+Giant human fingers with [피부톤], [소매], [손톱] are [지금 하고 있는 동작 하나] using [그 동작에 쓰는 도구].
+Tiny realistic construction tools including [이 건축물에 필요한 공구 2~4개] and a pair of fine-tip miniature tweezers resting nearby for precision detail work.
+Partially prepared [기초 부위] with [주요 자재 — 재질과 색을 그대로] stacked neatly nearby.
+8K detail, cinematic studio lighting from top-left 45 degrees, 5600K daylight color temperature, shallow depth of field.</code></pre></div>
+<h3>영상 프롬프트 틀</h3>
+<div class="codewrap"><div class="codebar"><span class="len">1,324자</span><button class="copy" type="button" data-t="c1">복사</button></div><pre id="c1"><code>[Technical Parameters: Total Duration 15s, Aspect Ratio 9:16, 8-10 Shot Beats, First-Frame Lock from Master Image. Structure lock: [평면 형태 + 기둥/벽 개수 + 층수].]
+
+[Hook 0-1.5s]: Ultra fast timelapse speed. Macro extreme close-up shot of giant human fingers [가장 만족스러운 첫 동작] using [도구], creating an instant satisfying [그때 나는 소리].
+
+[First Half 1.5-7.5s]: Transition to low-angle macro shot. Giant hands rapidly [주 공정 — 실제 시공 순서대로] using [도구]. Fast timelapse movement showing [무엇이 올라오는지] rising smoothly.
+
+[Mid-Segment Material Reassertion 7.5-8s]: Continuous macro shot. The [자재1과 그 색], [자재2와 그 색], and top-left 45-degree 5600K cinematic daylight remain strictly consistent without texture shift. The structure remains [평면 형태 다시 한 번].
+
+[Second Half 8-13s]: High-angle overhead tracking shot. Giant fingers switch to [도구] to [다음 공정], then rapidly [마감 공정] one by one with fine-tip tweezers. Complete [완성되는 부위] comes together in seamless fast motion, followed by brief micro-slowdown as [마지막 한 조각] is locked into place.
+
+[Reveal 13-15s]: Normal cinematic speed transition. Giant hands smoothly recede outward from the frame. Camera slowly dollies back and zooms out, revealing the fully constructed [건축물 — 평면 형태 포함] standing elegantly amidst [주변 조경]. ASMR audio layering of [현장음 3가지] SFX.
+
+Negative Prompt: "[아래 §2-공용 네거티브 블록을 그대로 붙인다]"</code></pre></div>
+<h3>공용 네거티브 블록 (건축물이 바뀌어도 그대로 쓴다)</h3>
+<div class="codewrap"><div class="codebar"><span class="len">1,422자</span><button class="copy" type="button" data-t="c2">복사</button></div><pre id="c2"><code>text, subtitle, caption, watermark, logo, burnt-in text, overlay text, bad anatomy, deformed hands, extra fingers, mutated fingers, multiple hands, floating disconnected tools, miniature human figures, plastic-looking texture, unrealistic scale jump, inconsistent lighting direction, flickering light, low resolution, blurry, warped perspective, material identity shift, texture morphing between shots, wood turning into stone, object material flicker, inconsistent surface texture across frames, props vanishing without cause, previously placed materials missing when a new segment opens, tools or stacked supplies disappearing between segments, layout guide string disappearing between cuts, tools or stakes teleporting away, hand entering frame with no arrival motion, hand exiting frame with no departure motion, background elements changing between segments, construction steps skipping without transition, bare fingertip pinching pebble-sized objects, tweezers missing during fine detail work, clumsy imprecise placement of tiny decorative elements, roof appearing before walls are complete, windows installed before frame exists, out-of-order construction sequence, structurally impossible assembly, wrong tool for the construction technique, bare-handed work where a hand tool should be used, shape drift between assembly and final reveal, final building having a different floor plan than the frame that was built</code></pre></div>
+<blockquote>마지막 두 줄(<code>shape drift...</code>)은 실제 테스트에서 <strong>사각 골조가 육각 정자로 완성되는</strong> 사고가 나서 추가한 것이다.</blockquote>
+<hr>
+<h2>1-B. 빈칸 채우는 법</h2>
+<p>대괄호 8개만 정하면 된다. <strong>어려운 건 딱 하나 — 시공 순서다.</strong> 나머지는 보고 적으면 된다.</p>
+<div class="tw"><table><thead><tr><th>빈칸</th><th>무엇을 적나</th><th>흔한 실수</th></tr></thead><tbody><tr><td><strong>건축물</strong></td><td>이름만 쓰지 말고 <strong>평면 형태 + 층수</strong>까지</td><td>"한옥 정자" ❌ → "사각 네 기둥 단층 한옥 정자" ✅</td></tr><tr><td><strong>바닥·주변</strong></td><td>모래·자갈·잔디·절벽 등</td><td>안 적으면 매번 배경이 바뀐다</td></tr><tr><td><strong>손</strong></td><td>피부톤 + 소매 + 손톱</td><td>안 적으면 컷마다 다른 사람 손이 나온다</td></tr><tr><td><strong>공구</strong></td><td>그 공법에 실제로 쓰는 것</td><td>핀셋은 <strong>항상</strong> 넣는다 (안 넣으면 맨손으로 자갈을 집는다)</td></tr><tr><td><strong>기초 부위</strong></td><td>지금 어디까지 돼 있나</td><td>완성 직전 상태를 적으면 영상이 할 일이 없어진다</td></tr><tr><td><strong>자재</strong></td><td><strong>재질 + 색</strong>을 같이</td><td>색을 빼면 도중에 나무가 돌로 변한다</td></tr><tr><td><strong>시공 순서</strong></td><td>실제 순서 (아래 표)</td><td>지붕이 벽보다 먼저 나오는 사고의 원인</td></tr><tr><td><strong>현장음</strong></td><td>그 작업에서 실제로 나는 소리 3가지</td><td>안 적으면 배경음악이 깔린다</td></tr></tbody></table></div>
+<h3>시공 순서 — 건축물별로 이걸 그대로 쓰면 된다</h3>
+<div class="tw"><table><thead><tr><th>건축물</th><th>실제 순서 (이 순서대로 프롬프트에 적는다)</th><th>특징 공구</th></tr></thead><tbody><tr><td>한옥·정자·사찰</td><td>초석 → 기둥·보 결구 → 도리 → 서까래 → 기와 → 단청·조경</td><td>나무망치, 핀셋, 미니 흙손</td></tr><tr><td>서양식 주택</td><td>터파기 → 배근 → 거푸집 → 콘크리트 타설 → 골조·벽체 → 지붕 → 창호 → 외벽 마감</td><td>와이어커터, 흙손, 수평계</td></tr><tr><td>아파트·빌딩</td><td>기초 슬래브 → 기둥·코어 → 층별 슬래브 반복 → 외벽 패널 → 창호 → 옥상</td><td>미니 클램프, 핀셋</td></tr><tr><td>석조 성당·교회</td><td>기초 → 벽체 석재 쌓기 → 아치·버팀벽 → 지붕 트러스 → 스테인드글라스 → 첨탑</td><td>핀셋, 미니 끌, 접착제</td></tr><tr><td>등대</td><td>암반 기초 → 원통 석조/콘크리트 쌓기 → 내부 계단 → 랜턴룸 유리 → 등기구 → 도색</td><td>핀셋, 미니 붓</td></tr><tr><td>목조 카페·오두막</td><td>기초 블록 → 토대 → 벽 프레임 → 서까래·지붕 → 판재 외벽 → 창문 → 가구</td><td>미니 톱, 나무망치</td></tr><tr><td>수영장·워터</td><td>굴착 → 방수 → 수조 설치 → 배관·조명 배선 → 타일 → 물 채우기 → 점등</td><td>정밀 펜치, 스포이트</td></tr><tr><td>트리하우스</td><td>앵커 고정 → 지지 보 → 데크 → 벽 → 지붕 → 사다리·로프</td><td>와이어커터, 나무망치</td></tr><tr><td>창고·헛간</td><td>기초 → 기둥 → 트러스 → 골강판 지붕 → 벽 → 대문</td><td>미니 클램프, 핀셋</td></tr><tr><td>다리·구조물</td><td>교각 기초 → 교각 → 거더 → 상판 → 난간 → 포장</td><td>핀셋, 수평계</td></tr></tbody></table></div>
+<blockquote><strong>없는 건축물이면</strong> 실제 시공 순서를 한 번 찾아보고 적는다. 이 한 줄이 영상의 절반을 결정한다.<br>순서를 모르면 모델이 지어내고, 지붕이 벽보다 먼저 올라간다.</blockquote>
+<hr>
+<h2>1-C. 따라해보기 — 등대 하나를 처음부터 채워본다</h2>
+<p>위 3종에 없는 건축물로 직접 해보자. <strong>등대</strong>를 고른다.</p>
+<h3>1) 대괄호를 하나씩 정한다</h3>
+<div class="tw"><table><thead><tr><th>빈칸</th><th>정한 값</th><th>왜 이렇게</th></tr></thead><tbody><tr><td>건축물</td><td>원통형 2층 석조 등대 + 꼭대기 유리 랜턴룸</td><td>"등대"만 쓰면 형태가 매번 바뀐다. <strong>원통·2층</strong>을 박는다</td></tr><tr><td>바닥·주변</td><td>젖은 짙은 화강암 암반 + 고운 모래 + 흩어진 자갈</td><td>등대는 해안에 선다. 배경이 정해져야 컷마다 안 바뀐다</td></tr><tr><td>손</td><td>밝은 베이지 피부, 걷어올린 네이비 소매, 짧고 깨끗한 손톱</td><td>소매 색까지 정해야 다른 사람 손이 안 나온다</td></tr><tr><td>지금 동작</td><td>곡면 석재 블록을 원형 기초에 놓는 중 (핀셋 사용)</td><td>시작 시점의 한 동작</td></tr><tr><td>공구</td><td>미니 흙손, 줄눈 도구, 미니 붓, <strong>핀셋</strong></td><td>등대는 도색이 있어 붓이 필요하다. 핀셋은 항상</td></tr><tr><td>기초 부위</td><td>원형 화강암 기초 링</td><td>시공 순서표의 첫 단계</td></tr><tr><td>자재</td><td>옅은 회색 절석 블록, <strong>홍백 도색 밴드 조각</strong>, 작은 놋쇠 등기구 하우징</td><td>등대의 정체성은 홍백 줄무늬다. 색을 명시</td></tr><tr><td>조명·화질</td><td>그대로 (템플릿 고정값)</td><td>건드릴 이유가 없다</td></tr></tbody></table></div>
+<h3>2) 틀에 넣으면 이렇게 된다</h3>
+<div class="codewrap"><div class="codebar"><span class="len">957자</span><button class="copy" type="button" data-t="c3">복사</button></div><pre id="c3"><code>Ultra realistic macro photography, vertical 9:16 aspect ratio, miniature construction site for a cylindrical two-story stone lighthouse with a glass lantern room on top.
+Ground and surroundings: a small rocky coastal outcrop of dark wet granite with fine sand and scattered pebbles around it.
+Giant human fingers with light beige skin tone, rolled-up navy sleeves, clean short nails are setting a curved stone block into the circular base course using fine-tip tweezers.
+Tiny realistic construction tools including a miniature trowel, a small pointing tool, a miniature paintbrush and a pair of fine-tip miniature tweezers resting nearby for precision detail work.
+Partially prepared circular granite base ring with pale grey cut stone blocks, red-and-white painted band segments and a small brass lantern housing stacked neatly nearby.
+8K detail, cinematic studio lighting from top-left 45 degrees, 5600K daylight color temperature, shallow depth of field.</code></pre></div>
+<h3>3) 결과 — 슬롯이 전부 살아났다</h3>
+<p>원통 2층 석조, 유리 랜턴룸, 젖은 암반과 모래, 네이비 소매의 거대한 손,<br>흙손·줄눈도구·붓·핀셋 네 가지, 원형 기초 링, 홍백 밴드, 놋쇠 등기구까지 화면에 다 나왔다.<br><strong>원본 3종에 없던 건축물인데 틀만 채워서 나왔다</strong> — 이게 이 템플릿이 범용이라는 증거다.</p>
+<h3>4) 그런데 여기서 함정에 걸렸다 ⚠</h3>
+<p><strong>등대가 이미 다 지어진 상태로 나왔다.</strong> 짓는 중이 아니라 완성품이 서 있다.</p>
+<p>원인은 첫 번째 빈칸이다. 건축물 칸에 "원통형 2층 석조 등대 + 유리 랜턴룸"이라고<br><strong>완성된 모습</strong>을 자세히 적었더니, 모델이 그 완성품을 그려버렸다.<br>뒤에 "partially prepared(일부만 준비된)"라고 적었지만 앞의 묘사가 이겼다.</p>
+<p><strong>고치는 법 — 건축물 칸에 진행 상태를 같이 적는다.</strong></p>
+<div class="tw"><table><thead><tr><th>이렇게 쓰면</th><th>이렇게 나온다</th></tr></thead><tbody><tr><td><code>a cylindrical stone lighthouse with a glass lantern room</code></td><td>완성된 등대 ❌</td></tr><tr><td><code>a cylindrical stone lighthouse under construction, only the circular base ring laid, tower not yet built</code></td><td>기초만 있는 현장 ✅</td></tr></tbody></table></div>
+<p>즉 <strong>①번 칸은 "무엇을 짓는가"가 아니라 "지금 어디까지 지어졌는가"까지 적어야 한다.</strong><br>영상용 첫 프레임은 <strong>할 일이 남아 있어야</strong> 한다. 완성품에서 시작하면 영상이 움직일 여지가 없다.</p>
+<blockquote>이 함정은 자료를 만들면서 우리가 직접 걸린 것이다. 처음 하는 사람은 거의 다 여기서 한 번 걸린다.</blockquote>
+<hr>
+<h2>1-D. 이미지 프롬프트 — 채운 예시 3종</h2>
+<h3>구성 — 이 6가지가 순서대로 들어간다</h3>
+<div class="tw"><table><thead><tr><th>순서</th><th>항목</th><th>예</th></tr></thead><tbody><tr><td>①</td><td>촬영 방식 + 비율</td><td><code>Ultra realistic macro photography, vertical 9:16 aspect ratio</code></td></tr><tr><td>②</td><td>무엇을 짓는 현장인가</td><td><code>miniature construction site for a traditional Korean Hanok pavilion</code></td></tr><tr><td>③</td><td>바닥·환경</td><td><code>sand and fine gravel surface</code></td></tr><tr><td>④</td><td><strong>손 잠금</strong></td><td><code>giant human fingers, light beige skin tone, bare wrist</code></td></tr><tr><td>⑤</td><td><strong>도구 잠금</strong> (스케일의 핵심)</td><td><code>fine-tip miniature tweezers and a miniature wooden mallet resting nearby</code></td></tr><tr><td>⑥</td><td><strong>재질 잠금</strong> + 조명</td><td><code>natural pine wood pillars, dark grey clay roof tiles</code> / <code>top-left 45 degrees, 5600K</code></td></tr></tbody></table></div>
+<p>⑤가 빠지면 거대한 손이 맨손으로 좁쌀만 한 걸 집는 그림이 나온다. ⑥이 빠지면 영상 중간에 나무가 돌로 변한다.</p>
+<h3>① 한옥 정자 — 662자</h3>
+<div class="codewrap"><div class="codebar"><span class="len">662자</span><button class="copy" type="button" data-t="c4">복사</button></div><pre id="c4"><code>Ultra realistic macro photography, miniature construction site, sand and fine gravel surface, giant human fingers interacting with miniature materials, light beige skin tone, bare wrist, tiny realistic construction tools including a pair of fine-tip miniature tweezers and a miniature wooden mallet resting nearby for precision detail work, partially prepared granite foundation area for a traditional Korean Hanok pavilion (Jeongja), natural pine wood pillars and dark grey clay roof tiles stacked neatly nearby, 8K detail, cinematic studio lighting from top-left 45 degrees, 5600K daylight color temperature, shallow depth of field, vertical 9:16 aspect ratio.</code></pre></div>
+<h3>② 모던 캔틸레버 인피니티 풀 빌라 — 764자</h3>
+<div class="codewrap"><div class="codebar"><span class="len">764자</span><button class="copy" type="button" data-t="c5">복사</button></div><pre id="c5"><code>Ultra realistic macro photography, 9:16 vertical aspect ratio, miniature construction site for a modern cantilever infinity villa with cascade pool, smooth sandy soil base, giant human fingers in rolled-up charcoal sleeves with natural Caucasian skin tone precisely aligning hand-bent wire rebar into tiny wooden formwork, tiny realistic construction tools including a miniature trowel, spirit level, wire cutters, and a pair of fine-tip miniature tweezers resting nearby for precision detail work, partially prepared micro-concrete foundation area with 1:12 scale structural components, 8K detail, cinematic studio lighting with 45-degree top-left keylight at 5600K, soft ambient fill, shallow depth of field, clear material texture lock, shot on 35mm macro lens.</code></pre></div>
+<h3>③ 절벽 트리하우스 — 782자</h3>
+<div class="codewrap"><div class="codebar"><span class="len">782자</span><button class="copy" type="button" data-t="c6">복사</button></div><pre id="c6"><code>Ultra realistic macro photography of a miniature construction site for a cliffside treehouse, framed in 9:16 vertical aspect ratio. A miniature cliff face made of realistic layered gray slate rock with a mini weathered tree trunk rooted into it. Giant human fingers with pale skin tone, rolled-up denim sleeves, and clean manicured nails are carefully positioning a tiny dark steel anchor bracket onto the rock face. Tiny realistic construction tools including miniature wire cutters, a mini wooden mallet, and a pair of fine-tip miniature tweezers/forceps are resting nearby on the cliff ledge. Partially prepared miniature cedar wood beam foundation anchored into the rock. 8K detail, cinematic studio lighting with a 45-degree top-left key light at 5600K, shallow depth of field.</code></pre></div>
+<hr>
+<h2>2. 영상 프롬프트 — 채운 예시 3종</h2>
+<h3>구성 — 이 순서를 지킨다</h3>
+<div class="tw"><table><thead><tr><th>순서</th><th>블록</th><th>하는 일</th></tr></thead><tbody><tr><td>①</td><td><code>[Technical Parameters]</code></td><td>총 길이·비율·비트 개수 + <strong>첫 프레임 잠금</strong> 선언</td></tr><tr><td>②</td><td><code>[Hook 0-1.5s]</code></td><td>가장 만족스러운 동작 하나로 연다 (핀셋으로 주춧돌 놓기 등)</td></tr><tr><td>③</td><td><code>[First Half]</code></td><td>초고속 타임랩스로 반복 작업</td></tr><tr><td>④</td><td><code>[Mid-Segment Material Reassertion]</code></td><td><strong>중간에 재질을 다시 못박는다</strong> — 8초 넘는 영상에서 필수</td></tr><tr><td>⑤</td><td><code>[Second Half]</code></td><td>다음 공정 + 마지막 한 동작에서 잠깐 느려짐</td></tr><tr><td>⑥</td><td><code>[Reveal]</code></td><td>손이 화면 밖으로 빠지고 카메라가 물러나며 완성본 공개</td></tr><tr><td>⑦</td><td><code>SFX</code></td><td>현장음만 (음악·목소리 금지)</td></tr><tr><td>⑧</td><td><code>Negative Prompt</code></td><td>본문 끝에 이어 붙인다 (§3-2 참조)</td></tr></tbody></table></div>
+<p>④가 이 자료에서 가장 덜 알려진 기법이다. 8초가 넘어가면 모델이 앞부분 재질을 잊는다.<br>중간에 "나무결은 그대로, 화강암 그대로, 조명 방향 그대로"를 한 문장 끼워넣는 것만으로 재질 변형이 크게 줄어든다.</p>
+<h3>① 한옥 정자 — 2,940자 (15초 · 9:16 · 오디오 on)</h3>
+<div class="codewrap"><div class="codebar"><span class="len">2,940자</span><button class="copy" type="button" data-t="c7">복사</button></div><pre id="c7"><code>[Technical Parameters: Total Duration 15s, Aspect Ratio 9:16, 8-10 Shot Beats, First-Frame Lock from Master Image]
+
+[Hook 0-1.5s]: Ultra fast timelapse speed. Macro extreme close-up shot of giant human fingers precisely setting a miniature granite cornerstone into leveled soil using fine-tip tweezers, creating an instant satisfying click.
+
+[First Half 1.5-7.5s]: Transition to low-angle macro shot. Giant hands rapidly join interlocking natural pine wood pillars and crossbeams using a miniature wooden mallet and mini wood clamps. Fast timelapse movement showing traditional mortise and tenon timber frame rising smoothly.
+
+[Mid-Segment Material Reassertion 7.5-8s]: Continuous macro shot. The natural light-brown pine wood grain of the timber frame, dark granite base stones, and top-left 45-degree 5600K cinematic daylight remain strictly consistent without texture shift.
+
+[Second Half 8-13s]: High-angle overhead tracking shot. Giant fingers switch to using a miniature trowel to spread tiny mortar, then rapidly lay dark grey clay ceramic giwa roof tiles onto miniature rafters one by one with fine-tip tweezers. Complete roof structure comes together in seamless fast motion, followed by brief micro-slowdown as the final ridge tile is locked into place.
+
+[Reveal 13-15s]: Normal cinematic speed transition. Giant hands smoothly recede outward from the frame. Camera slowly dollies back and zooms out, revealing the fully constructed Korean Hanok pavilion standing elegantly amidst tiny moss landscaping and miniature stone pathways. ASMR audio layering of wood tapping, trowel scraping, and tile clicking SFX.
+
+Negative Prompt: "text, subtitle, caption, watermark, logo, burnt-in text, overlay text, bad anatomy, deformed hands, extra fingers, mutated fingers, multiple hands, floating disconnected tools, miniature human figures, plastic-looking texture, unrealistic scale jump, inconsistent lighting direction, flickering light, low resolution, blurry, warped perspective, material identity shift, texture morphing between shots, wood turning into stone, object material flicker, inconsistent surface texture across frames, props vanishing without cause, previously placed materials missing when a new segment opens, tools or stacked supplies disappearing between segments, layout guide string disappearing between cuts, tools or stakes teleporting away, hand entering frame with no arrival motion, hand exiting frame with no departure motion, background elements changing between segments, construction steps skipping without transition, bare fingertip pinching pebble-sized objects, tweezers missing during fine detail work, clumsy imprecise placement of tiny decorative elements, roof appearing before walls are complete, windows installed before frame exists, out-of-order construction sequence, structurally impossible assembly, wrong tool for the construction technique, bare-handed work where a hand tool should be used."</code></pre></div>
+<h3>② 모던 인피니티 풀 빌라 — 3,474자 (15초 · 9:16 · 오디오 on)</h3>
+<p>야간 리빌이 붙어서 비트가 9개로 늘었다. LED·물·조명 변화가 들어가면 프롬프트가 길어진다.</p>
+<div class="codewrap"><div class="codebar"><span class="len">3,474자</span><button class="copy" type="button" data-t="c8">복사</button></div><pre id="c8"><code>[Technical Parameters: 15 seconds total duration, 9:16 vertical aspect ratio, 9 rapid cinematic shot beats, locked to master frame 1] [Beat 1, 0.0s-1.5s - Hook Shot]: Ultra fast timelapse speed, extreme macro overhead tilt shot, giant human fingers in rolled-up charcoal sleeves using a wire bending jig to cut fine wire rebar into wooden formwork on sandy soil. [Beat 2, 1.5s-3.5s]: Rapid wide-angle transition, wet concrete poured into formwork and leveled smoothly using a miniature metal trowel. [Beat 3, 3.5s-5.5s]: Low-angle dolly tracking shot, giant hand using mini clamps and wood glue to erect sleek white acrylic walls and cantilevered floor slabs while fine-tip tweezers position tiny black metal glass frames. [Beat 4, 5.5s-7.5s]: Dutch angle zoom, installing clear resin pool basin and running fine copper wiring for blue LED strip under the cascade waterfall edge using precision pliers. [Beat 5, 7.5s-8.2s - Mid-Segment Material Reassertion]: Continuous dynamic shot, reasserting material persistence: the structure retains its ultra-white micro-concrete walls, warm teak timber deck, dark charcoal roof slab, and transparent acrylic pool basin without any texture drift. [Beat 6, 8.2s-10.0s]: Top-down macro shot, giant fingers placing miniature teak wood deck planks one by one with wood glue, then positioning fine gravel, live moss patches, and micro pebbles around the pool using fine-tip tweezers, leaving no floating loose tools. [Beat 7, 10.0s-11.5s]: Close-up shot, giant hand placing glass balcony railings and turning a tiny micro-switch embedded in the base. [Beat 8, 11.5s-12.7s]: Water filled into the miniature pool with a micro-pipette, flowing smoothly over the cascade waterfall spillway. [Beat 9, 12.7s-15.0s - Night Reveal]: Giant hands complete the build and depart frame entirely; camera smoothly dollying out in cinematic normal speed as overhead studio lighting dims into ambient twilight, illuminating brilliant blue LED underwater lights and the glowing cascade waterfall of the completed modern villa. SFX: Subtle scraping of miniature trowel, soft click of wood joining, quiet trickling water and electric hum. Negative Prompt: "text, subtitle, caption, watermark, logo, burnt-in text, overlay text, bad anatomy, deformed hands, extra fingers, mutated fingers, multiple hands, floating disconnected tools, miniature human figures, plastic-looking texture, unrealistic scale jump, inconsistent lighting direction, flickering light, low resolution, blurry, warped perspective, material identity shift, texture morphing between shots, wood turning into stone, object material flicker, inconsistent surface texture across frames, props vanishing without cause, previously placed materials missing when a new segment opens, tools or stacked supplies disappearing between segments, layout guide string disappearing between cuts, tools or stakes teleporting away, hand entering frame with no arrival motion, hand exiting frame with no departure motion, background elements changing between segments, construction steps skipping without transition, bare fingertip pinching pebble-sized objects, tweezers missing during fine detail work, clumsy imprecise placement of tiny decorative elements, roof appearing before walls are complete, windows installed before frame exists, out-of-order construction sequence, structurally impossible assembly, wrong tool for the construction technique, bare-handed work where a hand tool should be used."</code></pre></div>
+<h3>③ 절벽 트리하우스 — 2,848자</h3>
+<div class="codewrap"><div class="codebar"><span class="len">2,848자</span><button class="copy" type="button" data-t="c9">복사</button></div><pre id="c9"><code>Aspect Ratio: 9:16 | Duration: 15s | Shot Beats: 8-10 beats | First-Frame Lock: Enabled. [0.0s-1.5s HOOK] Ultra-fast timelapse macro shot opening on giant human fingers with denim sleeves anchoring a dark steel support bracket into the cliffside rock. [1.5s-7.5s EARLY PHASE] The camera shifts to a low-angle tracking shot as giant hands rapidly construct the treehouse foundation platform using miniature cedar wooden beams, applying tiny dabs of glue with precision. Transitioning to a high-angle overhead shot, giant hands rapidly assemble the vertical wooden wall frames using miniature C-clamps and a tiny mallet. [7.5s-8.2s MID-SEGMENT REASSERTION] Mid-segment material check: The cedar wood grain texture, dark steel support brackets, and weathered cliff rock face remain strictly consistent with zero material morphing. [8.2s-12.7s LATE PHASE] Dutch-angle close-up: Giant hands use fine-tip miniature tweezers to place individual dark slate shingles onto the pitched roof with ultra-fast timelapse speed. Giant hands brush miniature wood stain onto the exterior siding, then install tiny glass window panes with tweezers. [12.7s-15.0s REVEAL] Giant hands smoothly exit the frame completely. Camera motion slows to normal cinematic speed with a smooth dolly-out revealing the fully completed miniature cliffside treehouse. The studio lights dim slightly as warm interior LED lights glow through the tiny windows and fairy lights along the deck. Diagetic SFX: Subtle wood tapping, soft metal scraping, gentle ambient wind. Negative Prompt: "text, subtitle, caption, watermark, logo, burnt-in text, overlay text, bad anatomy, deformed hands, extra fingers, mutated fingers, multiple hands, floating disconnected tools, miniature human figures, plastic-looking texture, unrealistic scale jump, inconsistent lighting direction, flickering light, low resolution, blurry, warped perspective, material identity shift, texture morphing between shots, wood turning into stone, object material flicker, inconsistent surface texture across frames, props vanishing without cause, previously placed materials missing when a new segment opens, tools or stacked supplies disappearing between segments, layout guide string disappearing between cuts, tools or stakes teleporting away, hand entering frame with no arrival motion, hand exiting frame with no departure motion, background elements changing between segments, construction steps skipping without transition, bare fingertip pinching pebble-sized objects, tweezers missing during fine detail work, clumsy imprecise placement of tiny decorative elements, roof appearing before walls are complete, windows installed before frame exists, out-of-order construction sequence, structurally impossible assembly, wrong tool for the construction technique, bare-handed work where a hand tool should be used."</code></pre></div>
+<hr>
+<h2>3. 크레딧을 쓰기 전에 알아야 할 함정</h2>
+<h3>3-1. 프롬프트 길이 상한은 <strong>어디에도 안 적혀 있다</strong></h3>
+<p>모델 정보에는 프롬프트가 문자열이고 필수라는 것만 나오고 최대 길이가 없다. 규칙 목록에도 없다.<br>무료 견적 단계는 3,000자를 넣어도 그냥 통과시킨다. <strong>실제 생성을 눌러야</strong> 그때 거부된다.</p>
+<p>실측된 거부 메시지: <code>prompt must be at most 2500 characters for image-to-video</code></p>
+<h3>3-2. 그런데 그 2,500자는 <strong>전역 규칙이 아니다</strong></h3>
+<p>같은 미니어처 작업에서 이런 일이 있었다.</p>
+<div class="tw"><table><thead><tr><th>프롬프트</th><th>모델</th><th>결과</th></tr></thead><tbody><tr><td>3,256자</td><td>이미지-투-비디오 모델 A</td><td>❌ "2,500자까지" 거부</td></tr><tr><td><strong>2,940자 (동일 프롬프트)</strong></td><td>모델 B의 <strong>일반(std)</strong></td><td>❌ 실패</td></tr><tr><td><strong>2,940자 (동일 프롬프트)</strong></td><td>모델 B의 <strong>fast</strong></td><td>✅ 성공 (3회 반복 성공)</td></tr><tr><td>3,474자</td><td>모델 B의 fast</td><td>✅ 성공</td></tr></tbody></table></div>
+<p><strong>같은 글자수인데 모델을 바꾸니 통과했다.</strong> 즉 "2,500자"를 모든 모델의 규칙으로 외우면 안 된다.<br>길다고 바로 잘라내기 전에 <strong>같은 계열의 다른 모델·다른 모드로 먼저 던져보는 게</strong> 순서다.<br>(거부는 잡이 생성되지 않아 과금되지 않는다 — 이 시도 자체는 공짜다.)</p>
+<h3>3-3. <code>negative_prompt</code> 칸은 없을 가능성이 높다</h3>
+<p>영상 모델 12종의 입력 항목을 전수 확인한 결과, 별도 <code>negative_prompt</code> 항목을 가진 모델은 <strong>0개</strong>였다.<br>인터넷 예제에 네거티브 프롬프트가 흔해도, 그 모델이 받는 항목에 없으면 <strong>아무 데도 안 들어간다.</strong><br>그래서 위 §2의 실제 프롬프트들은 네거티브를 <strong>본문 끝에 이어 붙였다.</strong> 그게 유일한 방법이다.</p>
+<h3>3-4. 네거티브가 본문보다 길어지는 순간을 조심한다</h3>
+<p>실측 사례에서 총 3,256자 중 본문이 1,491자, 네거티브 블록이 <strong>1,765자</strong>였다.<br>금지어를 계속 덧붙이다 보면 정작 필요한 동작 묘사를 밀어낸다. 압축 결과는 3,256자 → <strong>1,651자</strong>였다.</p>
+<h3>3-5. 실패 순서가 곧 비용이 된다</h3>
+<p>첫 프레임 이미지가 <strong>먼저</strong> 만들어져 과금되고, 그다음 영상에서 길이 초과로 거부됐다.<br>영상은 거부라 공짜였지만 이미지값은 돌아오지 않았다.<br>→ <strong>영상 프롬프트 글자수 검사는 이미지 생성보다 앞에 와야 한다.</strong> §0의 3단계가 4단계보다 앞인 이유다.</p>
+<h3>3-6. 미니어처 느낌은 "비교 대상"이 화면에 있을 때만 산다</h3>
+<p>거대한 손과 좁쌀만 한 재료가 같이 잡혀야 미니어처로 읽힌다.<br>클로즈업으로 밀고 들어가며 손이 프레임을 벗어나는 순간, 그냥 평범한 크기의 물건 영상이 된다.<br>클로즈업 구간에도 손가락 끝·도마 모서리·공구 같은 기준물을 하나는 남기고,<br><code>keep a fingertip or a tool in frame for scale</code> 한 줄로 고정한다.</p>
+<hr>
+<h2>4. 프롬프트 길이 줄이는 법</h2>
+<ol>
+<li><strong>역할을 나눈다.</strong> 첫 프레임 = 외형·재질·구도·손·조명 / 영상 = 움직임·순서·카메라·사운드. 같은 수식어를 양쪽에 다 쓰지 않는다.</li>
+<li><strong>동의어를 묶는다.</strong> <code>text, subtitle, caption, watermark, logo, burnt-in text, overlay text</code> → <code>no text, captions, watermarks or logos</code></li>
+<li><strong>증상을 규칙으로 바꾼다.</strong> 소품이 사라지는 경우를 길게 나열하는 대신 <code>props remain visible until a hand explicitly removes them</code> 한 줄.</li>
+<li><strong>핵심 네거티브만 남긴다.</strong> 손 왜곡 · 재질 변형 · 소품 실종 · 공정 생략 · 도구 스케일 · 텍스트 · 카메라 흔들림. 정적인 외형 문제는 첫 프레임 프롬프트로 옮긴다.</li>
+<li><strong>공정을 덜 담는다.</strong> 형용사를 지우기 전에 한 클립이 담는 공정 범위를 줄인다. 완결된 짧은 것이 순서 무너진 긴 것보다 낫다.</li>
+<li><strong>다른 모델을 먼저 던져본다.</strong> (§3-2) 자르는 건 그다음이다.</li>
+</ol>
+<hr>
+<h2>5. 주제별 응용</h2>
+<div class="tw"><table><thead><tr><th>주제</th><th>첫 프레임에서 잠글 것</th><th>영상에서 순서 지킬 것</th></tr></thead><tbody><tr><td>한옥·정자·사찰</td><td>화강암 주춧돌, 소나무 기둥, 회색 기와, 핀셋+나무망치</td><td>주춧돌 → 기둥·보 결구 → 서까래 → 기와 → 조경</td></tr><tr><td>현대 주택·빌라</td><td>철근·나무 거푸집·습식 콘크리트, 트라울+와이어커터</td><td>배근 → 타설 → 벽체·슬래브 → 창호 → 마감</td></tr><tr><td>수영장·워터 리빌</td><td>투명 아크릴 수조, 구리 배선, LED</td><td>구조 완성 → 배선 → 물 채우기 → 조명 점등(야간 리빌)</td></tr><tr><td>트리하우스·절벽</td><td>절벽 지층 단면, 로프, 목재 데크</td><td>지지대 → 데크 → 벽 → 지붕 → 사다리·로프</td></tr><tr><td>미니 주방·요리</td><td>미니 싱크대와 흐르는 물, 원목 도마, 1.5cm 칼</td><td>씻기 → 손질 → 가열 → 플레이팅</td></tr></tbody></table></div>
+<hr>
+<h2>6. 실패 증상별 처방</h2>
+<div class="tw"><table><thead><tr><th>증상</th><th>고칠 문장</th></tr></thead><tbody><tr><td>길이 초과로 거부</td><td>자르기 전에 <strong>다른 모델/모드로 먼저</strong> 던져본다 (§3-2). 그래도 길면 §4 순서대로.</td></tr><tr><td>나무가 돌로 변함</td><td>중간에 <code>Mid-Segment Material Reassertion</code> 블록을 넣는다 (8초 이상이면 필수)</td></tr><tr><td>놓아둔 공구·재료가 사라짐</td><td><code>props remain visible until a hand explicitly removes them</code></td></tr><tr><td>지붕이 벽보다 먼저 나옴</td><td>첫 줄에 실제 시공 순서를 적고, 한 클립이 담는 범위를 인접 공정으로 줄인다</td></tr><tr><td>맨손으로 좁쌀만 한 걸 집음</td><td><code>fine-tip miniature tweezers</code>를 <strong>첫 프레임 프롬프트에도</strong> 넣어 화면에 미리 놓아둔다</td></tr><tr><td>공구가 실물 크기로 커짐</td><td>도구 이름만 쓰지 말고 미니어처 크기·대상 대비를 적는다</td></tr><tr><td>미니어처처럼 안 보임</td><td>프레임에 크기 기준물을 남긴다 (§3-6)</td></tr><tr><td><strong>골조는 사각인데 완성본이 육각</strong></td><td>재질만 잠그고 <strong>형태를 안 잠근 경우</strong>다. 첫 프레임 프롬프트와 영상 프롬프트 양쪽에 <code>square four-post pavilion</code> 처럼 <strong>평면 형태와 기둥 개수</strong>를 적는다. 재질 잠금(§1-⑥)만으로는 안 잡힌다</td></tr><tr><td>손이 갑자기 나타나고 사라짐</td><td><code>hand entering/exiting frame with visible arrival and departure motion</code></td></tr><tr><td>음악·목소리가 붙음</td><td>SFX 줄에 현장음만 지정하고, 네거티브에 음악·나레이션을 넣는다</td></tr></tbody></table></div>
+<hr>
+<h2>7. 이 자료로 만든 영상의 실제 설정</h2>
+<div class="tw"><table><thead><tr><th>항목</th><th>값</th></tr></thead><tbody><tr><td>비율 · 길이</td><td>9:16 · 15초</td></tr><tr><td>해상도</td><td>720p</td></tr><tr><td>오디오</td><td>생성 켬 (현장음 ASMR)</td></tr><tr><td>시작 이미지</td><td>§1의 결과 1장</td></tr><tr><td>비트 수</td><td>8~10개</td></tr></tbody></table></div>
+<p>이미지 한 장은 영상 한 편보다 훨씬 싸다. <strong>이미지에서 충분히 실패하고, 영상은 한 번에 뽑는다.</strong></p>
+<hr>
+<h2>8. 이 자료를 그대로 복붙해서 다시 돌려본 결과</h2>
+<p>이 문서에 실린 프롬프트를 <strong>문서에서 그대로 복사해</strong> 처음부터 다시 돌려봤다. 결과는 이랬다.</p>
+<p><strong>1단계(이미지) — 지시한 항목이 전부 나왔다.</strong><br>모래·잔자갈 바닥, 거대한 손, 핀셋과 나무망치가 옆에 놓인 상태, 화강암 기초, 소나무 기둥, 회색 기와 더미, 45도 조명, 9:16.<br>특히 ⑤ 도구 잠금이 제대로 먹어서, 손이 맨손으로 자갈을 집는 그림이 나오지 않았다.</p>
+<p><strong>4단계(영상) — 공정 순서가 지켜졌다.</strong><br>주춧돌 놓기 → 기둥·보 결구 → 모르타르 → 기와 → 완성 리빌 순으로 나왔고 건너뛴 단계가 없었다.<br>소나무와 화강암이 도중에 다른 재질로 변하지 않았고, 조명 방향도 유지됐다.</p>
+<p><strong>다만 하나가 틀렸다 — 형태 드리프트.</strong><br>조립 중에는 <strong>사각</strong> 골조였는데 마지막 리빌에서 <strong>육각</strong> 정자가 나왔다.<br>재질은 잠갔는데 <strong>평면 형태를 안 잠갔기</strong> 때문이다(§6 표 참조).<br>프롬프트에 기둥 개수와 평면 형태를 한 줄 넣으면 잡힌다.</p>
+<blockquote>즉 이 자료는 <strong>그대로 써도 작동하지만, 완벽하지는 않다.</strong><br>첫 판에 100% 나오는 프롬프트는 없고, §5·§6이 그 차이를 메우라고 있는 것이다.</blockquote>
+<hr>
+<h2>이 자료에 대해</h2>
+<ul>
+<li>무료로 나눠 쓰라고 만든 것이다. 그대로 써도 되고, 고쳐 써도 된다.</li>
+<li>실린 프롬프트는 전부 실제로 생성에 사용해 결과가 나온 것이다. 지어낸 것이 없다.</li>
+<li>잘 안 되는 부분(§1-C 4번, §8)도 그대로 적었다. 첫 판에 100% 나오는 프롬프트는 없다.</li>
+<li>안 되는 게 있으면 §6 처방표를 먼저 보고, 그래도 안 되면 물어보면 된다.</li>
+</ul>
+<footer>무료로 나눠 쓰라고 만든 자료입니다. 그대로 써도 되고 고쳐 써도 됩니다.<br>
+실린 프롬프트는 전부 실제로 생성에 사용해 결과가 나온 것입니다.</footer>
+</div>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click", function(){
+    var el = document.getElementById(b.dataset.t), txt = el.innerText;
+    function done(){ b.textContent="복사됨"; b.classList.add("done");
+      setTimeout(function(){ b.textContent="복사"; b.classList.remove("done"); }, 1600); }
+    function fallback(){
+      var ta=document.createElement("textarea"); ta.value=txt;
+      ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand("copy"); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback);
+    else fallback();
+  });
+});
+</script>
+</body>
+</html>
