@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UGC 광고영상 프롬프트 — 사람이 제품 들고 말하는 그 영상</title>
+<meta name="description" content="미니어처 영상 만드는 이미지 프롬프트와 영상 프롬프트, 하는 순서까지. 아무 건축물이나 넣는 공용 템플릿 포함.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UGC 광고영상 프롬프트 — 사람이 제품 들고 말하는 그 영상">
+<meta property="og:description" content="미니어처 영상 만드는 이미지 프롬프트와 영상 프롬프트, 하는 순서까지. 아무 건축물이나 넣는 공용 템플릿 포함.">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C; --dim:#6E665A;
+  --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8; --dim:#9A9184;
+         --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+}
+:root[data-theme="dark"]{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8;
+  --dim:#9A9184; --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+:root[data-theme="light"]{ --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C;
+  --dim:#6E665A; --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif;
+  line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:36px 18px 100px}
+.chbanner{margin:0 0 22px}
+.chbanner .kk,.chbanner .nm{display:none}
+h1{font-size:clamp(23px,5vw,31px);line-height:1.35;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(18px,4vw,22px);margin:50px 0 14px;padding-top:22px;
+   border-top:1px solid var(--line);letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16.5px;margin:30px 0 10px;color:var(--accent)}
+h4{font-size:15.5px;margin:22px 0 8px}
+p{margin:14px 0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+blockquote{margin:18px 0;padding:12px 16px;background:var(--panel);
+  border-left:3px solid var(--accent);border-radius:0 8px 8px 0;color:var(--dim);font-size:15px}
+blockquote.warn{border-left-color:var(--warn)}
+ul,ol{padding-left:22px;margin:14px 0}
+li{margin:6px 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);
+  border:1px solid var(--line);padding:1px 5px;border-radius:4px;word-break:break-all}
+.tw{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:340px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600;color:var(--dim);white-space:nowrap}
+td code{background:transparent;border:0;padding:0}
+.codewrap{margin:18px 0;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.codebar{display:flex;justify-content:space-between;align-items:center;
+  background:var(--panel);padding:7px 12px;font-size:12.5px;color:var(--dim)}
+.len{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.copy{font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--accent);
+  background:transparent;color:var(--accent);padding:5px 16px;border-radius:99px;
+  min-height:32px;transition:background .15s,color .15s}
+.copy:hover,.copy.done{background:var(--accent);color:#fff}
+pre{margin:0;background:var(--code-bg);color:var(--code-ink);padding:16px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre code{font-family:var(--mono);font-size:13px;line-height:1.62;background:transparent;
+  border:0;padding:0;white-space:pre;word-break:normal;color:inherit}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--dim)}
+@media (max-width:520px){ .wrap{padding:26px 14px 80px} pre code{font-size:12px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="chbanner"><h1>실전 05. UGC 광고영상 — 사람이 제품 들고 말하는 그 영상</h1></div>
+<p>인스타·틱톡에서 흔히 보는 <strong>"실사용자가 제품 들고 리뷰하는" 세로 영상</strong>을 AI로 만드는 방법이다.<br>미니어처 편과 구조는 같다. <strong>이미지 프롬프트로 첫 프레임을 만들고, 그 이미지를 영상 모델에 넣는다.</strong></p>
+<p>여기 실린 것은 실제로 광고 영상을 만들며 쓴 문장들이고,<br>그 과정에서 <strong>다섯 번 실패하며 알아낸 함정</strong>도 그대로 적었다(§4).</p>
+<h3>목차</h3>
+<div class="tw"><table><thead><tr><th>절</th><th>내용</th></tr></thead><tbody><tr><td>§0</td><td>순서 — 무엇을 먼저 하나</td></tr><tr><td>§1</td><td>이미지 프롬프트 (첫 프레임) + 틀</td></tr><tr><td>§2</td><td>영상 프롬프트 + 틀</td></tr><tr><td>§3</td><td><strong>광고에만 있는 4개 잠금 블록</strong> — 이게 이 자료의 핵심</td></tr><tr><td>§4</td><td>실패 5번의 기록 — 브랜드명은 왜 AI에게 맡기면 안 되는가</td></tr><tr><td>§5</td><td>업종별 응용</td></tr><tr><td>§6</td><td>실패 증상별 처방</td></tr></tbody></table></div>
+<hr>
+<h2>0. 순서</h2>
+<p><strong>1단계 · 첫 프레임 이미지를 만든다</strong> — 사람·제품·장소·조명이 여기서 전부 결정된다.<br><strong>2단계 · 이미지에서 끝낸다</strong> — 이미지는 싸고 영상은 비싸다. 손·얼굴·제품이 이상하면 여기서 고친다.<br><strong>3단계 · 영상 프롬프트 글자수를 센다</strong> — 모델마다 상한이 다르고 어디에도 안 적혀 있다.<br><strong>4단계 · 그 이미지를 시작 프레임으로 넣고 영상을 만든다.</strong><br><strong>5단계 · 예쁨보다 먼저 이걸 본다</strong> — 얼굴이 잘리지 않았나 · 제품 라벨이 바뀌지 않았나 · 없는 효능을 말하지 않나.</p>
+<h3>어디에 넣나</h3>
+<div class="tw"><table><thead><tr><th>단계</th><th>필요한 것</th></tr></thead><tbody><tr><td>1단계</td><td>사진처럼 나오는 이미지 AI (Z Image · GPT Image · Midjourney · Flux)</td></tr><tr><td>4단계</td><td><strong>시작 이미지를 받는</strong> 영상 AI (Seedance 2.0 · Veo 3.1 · Kling 3.0 · Wan)</td></tr></tbody></table></div>
+<hr>
+<h2>1. 이미지 프롬프트 — 첫 프레임</h2>
+<h3>틀</h3>
+<div class="codewrap"><div class="codebar"><span class="len">362자</span><button class="copy" type="button" data-t="c0">복사</button></div><pre id="c0"><code>Vertical 9:16 smartphone selfie photo taken in [장소], [배경 요소]. [인물 — 나이대·머리·메이크업·옷]는 [제품]을 얼굴 옆으로 들어 카메라를 향한다. 얼굴이 프레임에 또렷하게 보이고, 렌즈를 똑바로 본다.
+The product is [제품 형태·색·재질]. [라벨 규칙 — §3-A 참조].
+Native UGC look: handheld phone camera, slightly imperfect framing, natural window light, no beauty retouching, real skin texture with visible pores, preserved sensor grain.</code></pre></div>
+<h3>실제로 쓴 것 (샘플 영상의 첫 프레임)</h3>
+<div class="codewrap"><div class="codebar"><span class="len">939자</span><button class="copy" type="button" data-t="c1">복사</button></div><pre id="c1"><code>Vertical 9:16 smartphone selfie photo taken in a bright home bathroom, mirror behind. A Korean woman in her late twenties, long dark brown hair, minimal natural makeup, wearing a plain cream ribbed top, holds a skincare ampoule bottle up beside her face toward the camera. Her face is clearly visible in frame, warm friendly expression, looking straight at the lens.
+The product is a slim cylindrical clear glass bottle with pale blue liquid and a white dropper cap. Its label is a plain matte white wrap with absolutely no text, no letters, no numbers, no symbols and no logos anywhere on the bottle or cap — a completely unbranded blank sample bottle.
+Native UGC look: handheld phone camera, slightly imperfect framing, natural window light plus soft vanity bulbs, no beauty retouching, real skin texture with visible pores, preserved sensor grain. Shallow depth of field on the face, product held close enough to read the label clearly.</code></pre></div>
+<hr>
+<h2>2. 영상 프롬프트</h2>
+<h3>실제로 쓴 것</h3>
+<div class="codewrap"><div class="codebar"><span class="len">1,663자</span><button class="copy" type="button" data-t="c2">복사</button></div><pre id="c2"><code>Continue exactly from the first frame: the same woman, same cream ribbed top, same hair, same bathroom, same lighting. She is the only person in the video.
+
+ANGLE LOCK: the product shows ONLY the label side seen in the first frame. She never rotates it to reveal unseen sides. The label stays a plain blank white wrap — no text, letters, numbers or logos ever appear on the bottle at any moment.
+
+Action: she holds the bottle beside her face and speaks warmly to the camera, then brings it closer for one clear close-up of the front label, then lowers it and finishes with a small friendly nod. Natural conversational gestures, occasional blinking, relaxed shoulders.
+
+Framing rule: talking-head selfie framing with her face clearly visible for at least half the runtime, alternating with the product close-up. Never crop her face out of frame. Never show hands only.
+
+Native UGC look: handheld phone footage with small framing imperfections and micro-shake, natural available light, no beauty grade, preserve original grain. Not cinematic, not colour-graded.
+
+Spoken content rule: she may refer only to the fact that this is a hydrating ampoule she uses. Strictly no invented benefits, no numbers or statistics, no certifications, no comparisons with other products, no medical or treatment claims, no exaggeration. Calm honest conversational delivery with natural pauses, not scripted.
+
+Audio: her natural speaking voice in Korean at conversational volume, faint room tone. No music, no narration overlay.
+
+Keep the frame free of on-screen text, captions, watermarks, logos other than the product label, extra people, distorted hands and warped facial features.</code></pre></div>
+<hr>
+<h2>3. 광고에만 있는 4개 잠금 블록</h2>
+<p>미니어처·풍경 영상엔 없고 <strong>광고에만 필요한</strong> 것들이다. 이 4개가 이 자료의 핵심이다.</p>
+<h3>A. 사실 잠금 — 없는 효능을 못 말하게 한다 🔴 제일 중요</h3>
+<div class="codewrap"><div class="codebar"><span class="len">287자</span><button class="copy" type="button" data-t="c3">복사</button></div><pre id="c3"><code>Allowed facts ONLY — the presenter may mention nothing beyond the product name, its category, and these selling points: [셀링포인트 3개].
+Strictly NO invented benefits, NO made-up numbers or statistics, NO certifications, NO comparisons with other products, NO medical claims, NO exaggeration.</code></pre></div>
+<p><strong>왜 필요한가.</strong> 이걸 안 넣으면 AI가 "3주 만에 70% 개선" 같은 숫자를 <strong>지어낸다.</strong><br>광고에서 없는 효능·수치를 말하면 표시광고법 문제가 된다. 재미로 만드는 게 아니라면 이 블록은 필수다.<br>허용할 사실을 <strong>직접 나열</strong>하고, 그 밖은 전부 금지한다.</p>
+<h3>B. 앵글 잠금 — 제품 뒷면을 지어내지 못하게 한다</h3>
+<div class="codewrap"><div class="codebar"><span class="len">178자</span><button class="copy" type="button" data-t="c4">복사</button></div><pre id="c4"><code>ANGLE LOCK: the product shows ONLY its front-facing label side as seen in the first frame.
+The person interacts with it without rotating it to reveal unseen sides. No exceptions.</code></pre></div>
+<p>제품을 돌리는 순간 AI는 <strong>본 적 없는 뒷면을 상상해서 그린다.</strong> 성분표도 지어낸다.<br>실제 제품이면 없는 디자인이 생기는 것이고, 그 영상은 못 쓴다.</p>
+<h3>C. 얼굴 유지 — 손만 나오는 영상이 되는 걸 막는다</h3>
+<div class="codewrap"><div class="codebar"><span class="len">231자</span><button class="copy" type="button" data-t="c5">복사</button></div><pre id="c5"><code>The presenter MUST appear on camera: talking-head selfie framing with the face clearly visible
+for at least half of the video, alternating with product close-ups.
+Never crop the presenter's face out of frame; never show only hands.</code></pre></div>
+<p>안 넣으면 AI가 편한 쪽으로 도망가서 <strong>손과 제품만 나오는 영상</strong>이 된다. UGC의 설득력은 얼굴에서 나온다.</p>
+<h3>D. 네이티브 UGC 룩 — "광고 티"를 지운다</h3>
+<div class="codewrap"><div class="codebar"><span class="len">190자</span><button class="copy" type="button" data-t="c6">복사</button></div><pre id="c6"><code>Native UGC look: handheld phone footage with small framing imperfections and micro-shake,
+natural available light, no beauty grade, preserve original grain. Not cinematic, not colour-graded.</code></pre></div>
+<p>이 블록이 빠지면 매끈한 광고가 나오고, 그건 UGC로 안 읽힌다. <strong>일부러 덜 예쁘게</strong> 만드는 게 요령이다.</p>
+<hr>
+<h2>4. 실패 5번의 기록 — 브랜드명은 AI에게 맡기지 마라</h2>
+<p>샘플을 만들며 가상 브랜드 이름 하나를 라벨에 새기려고 <strong>다섯 번</strong> 시도했다.</p>
+<div class="tw"><table><thead><tr><th>시도</th><th>넣으라고 한 것</th><th>실제로 나온 것</th><th>문제</th></tr></thead><tbody><tr><td>1</td><td>CELAUM + 소제목</td><td>CELAUM + <code>HVDRA AMAPOULE</code></td><td>작은 글자가 깨짐</td></tr><tr><td>2</td><td>CELAUM (한 줄만)</td><td><strong>SELAUM</strong></td><td>C를 S로</td></tr><tr><td>3</td><td>철자를 C-E-L-A-U-M로 못박음</td><td>CELAUM ✅ + <code>SPELLING LOCK</code></td><td><strong>지시어가 라벨에 인쇄됨</strong></td></tr><tr><td>4</td><td>지시어를 라벨 묘사에서 분리</td><td><strong>CLAUM</strong></td><td>E가 빠짐</td></tr><tr><td>5</td><td><strong>글자를 아예 없앰</strong></td><td>무지 백색 라벨 ✅</td><td>문제 없음</td></tr></tbody></table></div>
+<p><strong>결론 세 가지.</strong></p>
+<ol>
+<li><strong>AI 이미지에 브랜드명을 정확히 새기는 건 신뢰할 수 없다.</strong> 5번 중 2번만 맞았고, 맞은 두 번도 다른 부작용이 났다.</li>
+<li><strong>프롬프트에 쓴 지시어가 이미지 속 글자로 새어 들어간다.</strong> <code>SPELLING LOCK</code> 같은 말을 라벨 설명 옆에 두면 그게 라벨에 찍힌다. 규칙은 라벨 묘사와 <strong>문단을 떼어</strong> 쓴다.</li>
+<li><strong>그래서 실무는 이렇게 한다 — 브랜드명을 그리게 하지 말고, 제품 사진을 참조로 넣는다.</strong></li>
+</ol>
+<p>   제품 이미지를 첨부하고 <code>@Image1 is the product reference</code> + §3-B 앵글 잠금을 건다.<br>   철자 문제가 원천적으로 사라진다.</p>
+<blockquote>연습·포트폴리오용이라면 <strong>무지 병</strong>이 가장 안전하다. 철자 문제도, 남의 상표를 쓰는 문제도 없다.</blockquote>
+<hr>
+<h2>4-1. ⚠ 실존 브랜드로 만들 때</h2>
+<p><strong>남의 브랜드 제품으로 만든 광고를 공개하지 마라.</strong> 상표권 문제이기도 하고,<br>AI로 만든 사람이 실제 제품을 추천하는 형태는 <strong>없는 후기를 만들어 뿌리는 것</strong>이 된다.</p>
+<div class="tw"><table><thead><tr><th>용도</th><th>괜찮은가</th></tr></thead><tbody><tr><td>내 브랜드·내 제품</td><td>✅</td></tr><tr><td>의뢰받은 고객사 제품 (허락 있음)</td><td>✅</td></tr><tr><td>연습·포트폴리오 — 무지 병</td><td>✅</td></tr><tr><td>남의 브랜드로 만들어 공개</td><td>🔴 하지 마라</td></tr></tbody></table></div>
+<p>AI가 만든 인물이라는 것도 <strong>밝히는 쪽이 안전하다.</strong> 나라마다 규정이 다르지만 방향은 같다.</p>
+<hr>
+<h2>5. 업종별 응용</h2>
+<div class="tw"><table><thead><tr><th>업종</th><th>첫 프레임에서 정할 것</th><th>사실 잠금에 넣을 것</th></tr></thead><tbody><tr><td>화장품·스킨케어</td><td>욕실·화장대, 자연광, 민낯에 가까운 메이크업</td><td>성분명·제형·용량까지만</td></tr><tr><td>식품·건강기능식품</td><td>주방·식탁, 아침 햇빛</td><td>원재료·함량. <strong>효능 언급 금지</strong>(법적 위험 큼)</td></tr><tr><td>생활용품</td><td>실제 쓰는 자리(싱크대·세탁실)</td><td>용도·규격·재질</td></tr><tr><td>패션·잡화</td><td>전신 거울, 방 안</td><td>소재·색상·사이즈</td></tr><tr><td>앱·서비스</td><td>책상·카페, 화면이 보이는 각도</td><td>기능 이름만. <strong>성과 수치 금지</strong></td></tr></tbody></table></div>
+<hr>
+<h2>6. 실패 증상별 처방</h2>
+<div class="tw"><table><thead><tr><th>증상</th><th>고칠 문장</th></tr></thead><tbody><tr><td>없는 효능·수치를 말한다</td><td>§3-A 사실 잠금을 넣고, 허용 사실을 <strong>직접 나열</strong>한다</td></tr><tr><td>제품을 돌려서 없는 뒷면이 나온다</td><td>§3-B 앵글 잠금</td></tr><tr><td>손만 나오고 얼굴이 없다</td><td>§3-C 얼굴 유지</td></tr><tr><td>너무 매끈해서 광고 티가 난다</td><td>§3-D 네이티브 UGC 룩. <code>no beauty grade</code>를 꼭 넣는다</td></tr><tr><td>브랜드명 철자가 틀린다</td><td>그리게 하지 말고 <strong>제품 사진을 참조로</strong> 넣는다 (§4)</td></tr><tr><td>프롬프트 지시어가 화면에 글자로 나온다</td><td>규칙을 라벨·화면 묘사와 <strong>문단을 분리</strong>해서 쓴다</td></tr><tr><td>중간에 다른 사람이 나온다</td><td><code>She is the only person in the video</code>를 첫 줄에</td></tr><tr><td>배경음악이 깔린다</td><td><code>No music, no narration overlay</code>를 오디오 줄에</td></tr></tbody></table></div>
+<hr>
+<h2>이 자료에 대해</h2>
+<ul>
+<li>무료로 나눠 쓰라고 만든 것이다. 그대로 써도 되고 고쳐 써도 된다.</li>
+<li>실린 프롬프트는 전부 실제로 생성에 사용해 결과가 나온 것이다.</li>
+<li>샘플 영상의 제품은 <strong>가상의 무지 병</strong>이다. 실존 브랜드가 아니다.</li>
+<li>잘 안 되는 부분(§4)도 숨기지 않고 적었다. 첫 판에 100% 나오는 프롬프트는 없다.</li>
+</ul>
+<footer>무료로 나눠 쓰라고 만든 자료입니다. 그대로 써도 되고 고쳐 써도 됩니다.<br>
+실린 프롬프트는 전부 실제로 생성에 사용해 결과가 나온 것입니다.</footer>
+</div>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click", function(){
+    var el = document.getElementById(b.dataset.t), txt = el.innerText;
+    function done(){ b.textContent="복사됨"; b.classList.add("done");
+      setTimeout(function(){ b.textContent="복사"; b.classList.remove("done"); }, 1600); }
+    function fallback(){
+      var ta=document.createElement("textarea"); ta.value=txt;
+      ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand("copy"); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback);
+    else fallback();
+  });
+});
+</script>
+</body>
+</html>
