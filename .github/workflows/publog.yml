@@ -1,0 +1,34 @@
+# @heitzz 공개 발행 로그 자동 갱신 — 6시간마다 스레드 API에서 실기록을 읽어 log/ 재생성
+name: publog
+
+on:
+  schedule:
+    - cron: "17 */6 * * *" # 6시간마다 (정각 회피)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publog
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: generate log page
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+        run: node scripts/publog.js
+      - name: commit if changed
+        run: |
+          git config user.email "publog@heitzz.local"
+          git config user.name "heitzz-publog"
+          git add log/
+          git diff --cached --quiet && echo "변화 없음 — 커밋 생략" || (git commit -m "publog: 발행 로그 갱신" && git push)
