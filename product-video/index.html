@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>제품이 살아 움직이는 광고 영상 — 사진 한 장으로</title>
+<meta property="og:title" content="제품 사진 한 장 → 광고 영상. 움직임 프롬프트 전부 공개">
+<meta property="og:description" content="정지된 제품 사진을 김·결로·회전으로 살아 움직이게. 실제로 뽑아보고 정리한 이미지+영상 프롬프트와 실패 처방표.">
+<style>
+:root{--bg:#fff;--fg:#1c1c1e;--mut:#8e8e93;--line:#e5e5ea;--card:#f7f7f8;--acc:#4f46e5;--warn:#b45309;--warnbg:#fef3c7}
+@media(prefers-color-scheme:dark){:root{--bg:#101014;--fg:#f2f2f7;--mut:#8e8e93;--line:#2c2c31;--card:#1a1a1f;--acc:#8b85f4;--warn:#fbbf24;--warnbg:#3a2e12}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;max-width:720px;margin:0 auto;padding:32px 16px 80px;line-height:1.7}
+h1{font-size:1.5rem;margin-bottom:6px}
+.sub{color:var(--mut);font-size:.9rem;margin-bottom:28px}
+h2{font-size:1.15rem;margin:38px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin-bottom:12px;font-size:.95rem}
+.box{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;white-space:pre-wrap;font-size:.85rem;line-height:1.65;word-break:break-word}
+.box .cp{position:absolute;top:8px;right:8px;background:var(--acc);color:#fff;border:0;border-radius:6px;padding:6px 12px;font-size:.8rem;cursor:pointer}
+.warn{background:var(--warnbg);border-left:4px solid var(--warn);border-radius:6px;padding:12px 14px;margin:14px 0;font-size:.9rem}
+.step{background:var(--card);border-radius:10px;padding:14px 16px;margin:10px 0;font-size:.92rem}
+.step b{color:var(--acc)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.85rem}
+th,td{padding:8px;border:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--card)}
+.wrap{overflow-x:auto}
+footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:.82rem}
+footer a{color:var(--acc);text-decoration:none}
+</style></head><body>
+
+<h1>제품이 살아 움직이는 광고 영상</h1>
+<p class="sub">정지된 제품 사진 한 장을, 스크롤을 멈추게 하는 3~5초 광고 영상으로.
+카페·음식점·스토어 어디든 자기 제품 사진으로 바로 씁니다. 직접 뽑아보며 정리한 프롬프트예요.
+[복사] 눌러 그대로 쓰면 됩니다.</p>
+
+<h2>순서 — 이대로만 하면 됩니다</h2>
+<div class="step">1️⃣ <b>시작 이미지를 먼저 완성</b>합니다. 영상 품질의 80%가 여기서 갈려요. 제품 형태·라벨·색이 선명한 컷을 준비하세요.</div>
+<div class="step">2️⃣ 그 이미지를 영상 AI(씨댄스 2.0·힉스필드 등)에 넣고 <b>아래 움직임 프롬프트</b>를 줍니다.</div>
+<div class="step">3️⃣ <b>3~5초로 짧게</b>. 첫 프레임이 광고컷 그대로 서 있게 하세요. 길수록 뭉개집니다.</div>
+<div class="warn">⚠ 시작 이미지가 애매하면 프롬프트로 아무리 씨름해도 안 삽니다. 움직임보다 <b>시작 이미지가 먼저</b>예요.</div>
+
+<h2>움직임 프롬프트 4종 — 제품에 맞는 것 하나</h2>
+
+<h3>A. 김 오르는 컷 — 뜨거운 음식·음료·국물</h3>
+<div class="box" id="a">Gentle rising steam from the hot dish, subtle shimmer on the broth surface, the bowl and table stay perfectly still, warm soft light, locked-off camera, no camera shake, no new objects, product shape unchanged, smooth 5 second loop</div>
+
+<h3>B. 결로 흐르는 컷 — 차가운 음료·주류·아이스</h3>
+<div class="box" id="b">Slow water condensation droplets sliding down the cold glass surface, faint ice shift inside, label stays sharp and readable, background static, cool crisp light, locked camera, no product distortion, no added text, 4 second clip</div>
+
+<h3>C. 부드러운 회전 컷 — 잡화·화장품·전자기기</h3>
+<div class="box" id="c">Product slowly rotates about 15 degrees on its axis, a soft specular highlight travels across the surface revealing material texture, clean seamless background, controlled studio light, locked camera, 4 second smooth turn, single product only, no duplication</div>
+
+<h3>D. 카메라 다가가기 컷 — 감성·브랜드·디테일</h3>
+<div class="box" id="d">Very slow camera push-in toward the product, shallow depth of field, product and label remain perfectly still and in focus, soft cinematic light, 5 second dolly-in, no warping, no new elements entering the frame</div>
+
+<h2>공용 네거티브 블록 (제품 바뀌어도 그대로)</h2>
+<div class="box" id="neg">Negative: warped product shape, changed label, extra or duplicated product, morphing text, flickering, sudden camera shake, hands entering frame, new objects appearing, melted or liquefied edges, distorted logo, watermark</div>
+
+<h2>실패 증상별 처방</h2>
+<div class="wrap"><table>
+<tr><th>증상</th><th>다음 요청에 넣을 처방</th></tr>
+<tr><td>제품이 물렁하게 변형됨</td><td>product shape is rigid and unchanged, only steam/light moves</td></tr>
+<tr><td>라벨 글자가 흐물거림</td><td>label stays sharp, no text morphing, freeze the label region</td></tr>
+<tr><td>카메라가 흔들림</td><td>locked-off camera, no handheld shake, tripod stability</td></tr>
+<tr><td>제품이 두 개로 갈라짐</td><td>exactly one product, no duplication, no mirror copies</td></tr>
+<tr><td>배경에 이상한 게 생김</td><td>static clean background, no new objects entering</td></tr>
+</table></div>
+
+<h2>크레딧 아끼는 법</h2>
+<p>• <b>3~5초면 충분</b>합니다. 길수록 뭉개질 확률만 커져요. 스레드 미리보기는 앞 3초가 전부.<br>
+• 모델마다 글자수 상한이 다르고 어디에도 안 적혀 있습니다. 네거티브가 본문보다 길어지면 줄이세요.<br>
+• 소리 없이도 통합니다. 스레드는 음소거 자동재생이라 첫 3초 비주얼이 전부예요.</p>
+
+<h2>이것만은 — 광고법</h2>
+<p>확인된 사실만 넣으세요. 없는 효능·수치·인증·후기를 영상 자막이나 배지로 만들면 안 됩니다.
+협찬·제휴면 게시물 첫 문장에 '광고'를 눈에 띄게. 예뻐지는 것보다 탈 안 나는 게 먼저예요.</p>
+
+<footer>
+만든 사람: <a href="https://www.threads.com/@heitzz" target="_blank" rel="noopener">threads.com/@heitzz</a> —
+직접 뽑아보고 정리한 것만 나눕니다. 결과 안 나오면 스레드로 편하게 물어보세요.
+</footer>
+
+<script>
+document.querySelectorAll('.box').forEach(b=>{
+  const btn=document.createElement('button');
+  btn.className='cp'; btn.textContent='복사';
+  btn.onclick=()=>{ navigator.clipboard.writeText(b.textContent.replace(/^복사/,'').trim()).then(()=>{ btn.textContent='복사됨 ✓'; setTimeout(()=>btn.textContent='복사',1500); }); };
+  b.prepend(btn);
+});
+</script>
+</body></html>
