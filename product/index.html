@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>제품 광고컷 — 사진 한 장으로 만드는 판매 이미지</title>
+<meta property="og:title" content="제품 광고컷 마스터 프롬프트 — 실패 처방표까지">
+<meta property="og:description" content="스마트스토어·쿠팡 셀러용. 제품 사진 한 장으로 광고컷 만드는 프롬프트와 실패 증상별 처방 8가지.">
+<style>
+:root{--bg:#fff;--fg:#1c1c1e;--mut:#8e8e93;--line:#e5e5ea;--card:#f7f7f8;--acc:#4f46e5;--warn:#b45309;--warnbg:#fef3c7}
+@media(prefers-color-scheme:dark){:root{--bg:#101014;--fg:#f2f2f7;--mut:#8e8e93;--line:#2c2c31;--card:#1a1a1f;--acc:#8b85f4;--warn:#fbbf24;--warnbg:#3a2e12}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;max-width:720px;margin:0 auto;padding:32px 16px 80px;line-height:1.7}
+h1{font-size:1.5rem;margin-bottom:6px}
+.sub{color:var(--mut);font-size:.9rem;margin-bottom:32px}
+h2{font-size:1.15rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:1rem;margin:20px 0 8px}
+p{margin-bottom:12px;font-size:.95rem}
+.box{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:12px 0;white-space:pre-wrap;font-size:.85rem;line-height:1.65;word-break:break-all}
+.box .cp{position:absolute;top:8px;right:8px;background:var(--acc);color:#fff;border:0;border-radius:6px;padding:6px 12px;font-size:.8rem;cursor:pointer}
+.warn{background:var(--warnbg);border-left:4px solid var(--warn);border-radius:6px;padding:12px 14px;margin:14px 0;font-size:.9rem}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.85rem}
+th,td{padding:8px;border:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--card)}
+.wrap{overflow-x:auto}
+ol,ul{padding-left:22px;margin-bottom:12px;font-size:.95rem}
+li{margin-bottom:6px}
+footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:.82rem}
+footer a{color:var(--acc);text-decoration:none}
+</style></head><body>
+
+<h1>제품 광고컷 — 사진 한 장으로 만드는 판매 이미지</h1>
+<p class="sub">스마트스토어·쿠팡 셀러용. 실제 제품 사진을 스튜디오 촬영급 광고컷으로 바꾸는 프롬프트.
+전부 직접 실측하고 실패해보며 정리했다. 프롬프트마다 [복사]를 눌러 그대로 붙여넣으면 된다.</p>
+
+<h2>1. 마스터 프롬프트 — 이거 하나로 시작</h2>
+<p>중괄호 { }만 내 제품으로 바꾸고, <b>제품 사진과 함께</b> 통째로 붙여넣는다.
+사진 없이 돌리면 포장 모양을 추측해버리므로 콘셉트 시안으로만 취급할 것.</p>
+<div class="box" id="p1">너는 한국 이커머스 브랜드의 제품 사진 아트디렉터다. 첨부 이미지의 실제 제품을 주인공으로, 판매 페이지와 소셜 게시물에 사용할 광고컷 1장을 제작한다.
+
+[용도와 입력]
+- 제품명: {포장에 적힌 정확한 제품명}
+- 제품 종류·재질: {예: 무광 알루미늄 보온병}
+- 확인된 특징: {공식 상세페이지·포장에서 확인한 사실 1~3개}
+- 고객과 사용 장면: {예: 출근길 가방에 물병을 넣는 직장인}
+- 선택 스타일: {아래 A/B/C/D 중 하나}
+- 이미지 안 정확 문구: 헤드라인 "{한글 12자 이내}", 보조문구 "{한글 18자 이내 또는 없음}"
+- 브랜드 색: {색상명 또는 HEX, 없으면 제품에서 1색 추출}
+
+[사실 잠금 — 최우선]
+첨부 사진에서 보이는 제품의 실루엣, 비율, 색, 재질, 뚜껑·버튼·봉제선·포트, 라벨 위치와 로고를 그대로 보존한다. 읽히지 않는 라벨을 새 글자로 복원하지 말고 원본 이미지의 질감으로 유지한다. 입력에 없는 성분, 효능, 용량, 가격, 할인율, 인증, 수상, 후기, 비교 우위를 만들지 않는다. 확인되지 않은 주장을 카피나 배지로 추가하지 않는다.
+
+[구도]
+3:4 세로 광고컷. 제품 전체가 프레임 안에 있고 화면의 55~65%를 차지한다. 가장 중요한 면이 카메라를 향하게 한다. 제품과 바닥이 만나는 접지 그림자를 자연스럽게 만든다. 문구 영역은 제품과 겹치지 않는 상단 또는 좌측의 깨끗한 여백 25~30%에 둔다. 소품은 용도나 재질을 설명하는 것만 0~2개 사용한다.
+
+[스타일 실행]
+선택한 스타일 블록의 배경, 조명, 렌즈 감각, 소품 규칙을 따른다. 제품 표면의 실제 미세 질감, 모서리, 반사 특성을 유지한다. photorealistic commercial product photography, believable material, controlled lighting, clean color separation.
+
+[한글 조판]
+헤드라인과 보조문구를 위에 입력된 철자 그대로 각각 한 번만 쓴다. 굵고 단정한 한국어 산세리프, 높은 배경 대비, 충분한 자간과 행간. 제품 라벨 위가 아니라 지정된 여백에 배치한다. 임의의 영문, 숫자, 가격표, 버튼, 가짜 로고, 각주를 추가하지 않는다. 문구가 '없음'이면 해당 줄을 만들지 않는다.
+
+[제외]
+제품 재설계, 찌그러진 포장, 중복 제품, 잘린 제품, 틀린 로고, 재작성된 라벨, 과도한 반사, 떠 있는 그림자, 용도와 무관한 소품, 임의 텍스트, 워터마크를 제외한다.
+
+[출력 전 자체 점검]
+제품 동일성, 라벨 보존, 정확한 한글 철자, 문구 각 1회, 근거 없는 주장 부재, 3:4 구도, 자연스러운 접지감을 확인한다. 실패 항목이 있으면 그 항목만 고쳐 최종 이미지 1장을 출력한다.</div>
+
+<h2>2. 스타일 4종 — 내 제품에 맞는 것 하나만</h2>
+<p>마스터의 <b>[스타일 실행]</b> 아래에 선택한 블록 하나를 덧붙인다.</p>
+
+<h3>A. 깨끗한 카탈로그형 — 생활·주방·문구·수납</h3>
+<p>형태와 사용성이 중요할 때. 웜화이트나 옅은 제품색 배경, 넓은 확산광, 약한 접지 그림자, 정면 또는 45도.</p>
+<div class="box" id="pA">opaque seamless background, softbox-like diffuse light, crisp silhouette, honest catalog color</div>
+
+<h3>B. 원료·감각 스토리형 — 식품·향·비누·캔들·차</h3>
+<p>맛·향·촉감의 맥락이 필요할 때. 원료와 이어지는 따뜻한 팔레트와 창가 사광, 확인된 재료만 최대 2개.</p>
+<div class="box" id="pB">warm tactile still life, natural side light, subtle crumbs or condensation only when physically appropriate</div>
+
+<h3>C. 컬러 그래픽 팝형 — 잡화·스포츠·반려용품</h3>
+<p>색이 브랜드 자산일 때. 제품색과 연결된 한 가지 색으로 큰 컬러 면과 단순한 도형.</p>
+<div class="box" id="pC">bold color-block set, one accent color, hard-edged but believable shadow</div>
+
+<h3>D. 정밀 기능 프리미엄형 — 전자기기·금속 공구·오디오</h3>
+<p>표면 가공과 구조가 중요할 때. 딥그레이·네이비 배경, 얇은 림라이트, 절제된 반사, 45도 앵글. 사진에 없는 버튼·단자·UI는 금지.</p>
+<div class="box" id="pD">precision product photography, narrow rim light, controlled specular highlights, visible ports exactly as referenced</div>
+
+<h2>3. 한글 글자 안 깨지게 — 제일 많이 실패하는 곳</h2>
+<div class="warn">⚠ <b>"없음"이라고 적어도 모델이 글자를 만들어낼 수 있다.</b> 직접 실측한 사실이다 —
+보조문구를 '없음'으로 지정했는데도 문구가 생성됐다. 생성 후 반드시 확대해서 확인하고,
+원치 않는 글자가 있으면 <b>"추가 문구를 전부 제거하고 그 자리를 비워라"</b>로 재생성한다.</div>
+<ol>
+<li>헤드라인 12자, 보조문구 18자 안쪽. 한 이미지에 문장 두 개까지만.</li>
+<li>문구를 따옴표로 묶고 <b>철자 그대로 · 각각 한 번 · 다른 글자 없음</b>을 같이 쓴다.</li>
+<li>글자는 제품 라벨 위가 아니라 <b>단색 여백</b>에. 굵은 산세리프 + 높은 대비.</li>
+<li>오탈자만 있으면 처음부터 다시 만들지 말고 <b>"다른 요소는 전부 보존하고 헤드라인만 정확히 …로 교체"</b>로 편집.</li>
+<li>두 번 편집해도 깨지면 무텍스트 버전을 뽑아 미리캔버스·Canva에서 진짜 폰트로 얹는다.</li>
+</ol>
+<p>게시 전 200% 확대해서 받침·된소리·숫자를 한 글자씩 대조할 것. 모델이 "점검했다"고 말하는 건 증거가 아니다.</p>
+
+<h2>4. 실패 증상별 처방표 — 이상하게 나오면 여기부터</h2>
+<div class="wrap"><table>
+<tr><th>실패 증상</th><th>다음 요청에 넣을 처방</th></tr>
+<tr><td>용기·뚜껑 모양이 달라짐</td><td>스타일은 배경과 조명에만 적용하고 제품 형상은 첨부 사진 그대로 잠근다.</td></tr>
+<tr><td>라벨 글자가 새로 그려짐</td><td>읽히지 않는 라벨은 생성하지 말고 원본 픽셀 질감으로 보존한다.</td></tr>
+<tr><td>한글 받침이 틀림</td><td>문구를 한 줄로 줄이고 오탈자 영역만 편집한다.</td></tr>
+<tr><td>제품이 작고 소품이 큼</td><td>제품 점유율을 5%p 높이고 소품을 하나 제거한다.</td></tr>
+<tr><td>제품이 바닥에서 뜸</td><td>제품 바로 아래 짧고 부드러운 접지 그림자, 광원 방향과 일치.</td></tr>
+<tr><td>반사가 플라스틱처럼 보임</td><td>실제 재질명과 무광·유광 정도를 쓰고 하이라이트 폭을 지정한다.</td></tr>
+<tr><td>같은 제품이 두 개 생김</td><td>제품은 정확히 한 개, 반사면에도 복제된 형상 없음.</td></tr>
+<tr><td>전체가 어둡고 비슷함</td><td>업종에 맞는 A·B·C 분기로 바꾸고 배경 명도를 올린다.</td></tr>
+</table></div>
+
+<h2>5. 시작 설정값 — 첫 생성은 이대로</h2>
+<div class="wrap"><table>
+<tr><th>설정</th><th>값</th><th>메모</th></tr>
+<tr><td>비율</td><td>3:4 세로 (1536×1920)</td><td>오픈마켓 대표 썸네일은 1536×1536</td></tr>
+<tr><td>품질</td><td>high</td><td>라벨·한글이 보이는 완성컷이므로. 콘셉트 비교만 medium</td></tr>
+<tr><td>장수</td><td>1장씩</td><td>어떤 지시가 실패했는지 판별하기 쉽다</td></tr>
+<tr><td>제품 크기</td><td>화면의 55~65%</td><td>라벨 작으면 5%p 확대</td></tr>
+<tr><td>문구 여백</td><td>25~30%</td><td>카피 한 줄이면 20%</td></tr>
+<tr><td>배경</td><td>불투명, PNG</td><td>투명은 완성본 승인 후 별도 작업</td></tr>
+</table></div>
+
+<h2>6. 이것만은 지키자 — 광고법</h2>
+<p>포장·공식 상세페이지에서 <b>확인된 사실만</b> 입력한다. 모델이 지어낸 효능·수치·인증·후기는 쓰면 안 된다.
+협찬·제휴 관계가 있으면 게시물 <b>첫 부분</b>에 '광고'라고 눈에 띄게 적는다(2024 개정 심사지침 — 끝에 숨기면 안 됨).
+모르는 값은 그냥 비워라. 이미지가 예뻐지는 것보다 탈 안 나는 게 먼저다.</p>
+
+<footer>
+만든 사람: <a href="https://www.threads.com/@heitzz" target="_blank" rel="noopener">threads.com/@heitzz</a> —
+직접 실측한 것만 나눕니다. 궁금한 건 스레드로 편하게.
+</footer>
+
+<script>
+document.querySelectorAll('.box').forEach(b=>{
+  const btn=document.createElement('button');
+  btn.className='cp'; btn.textContent='복사';
+  btn.onclick=()=>{ navigator.clipboard.writeText(b.textContent.replace(/^복사/,'').trim()).then(()=>{ btn.textContent='복사됨 ✓'; setTimeout(()=>btn.textContent='복사',1500); }); };
+  b.prepend(btn);
+});
+</script>
+</body></html>
