@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사진 1장으로 비포/애프터 2컷, 글자까지 한 번에 — 프롬프트 원문</title>
+<meta name="description" content="스레드 21시 AI 이미지 글의 실제 프롬프트 원문과 결과 이미지">
+<meta property="og:type" content="article">
+<meta property="og:title" content="사진 1장으로 비포/애프터 2컷, 글자까지 한 번에 — 프롬프트 원문">
+<meta property="og:description" content="스레드 21시 AI 이미지 글의 실제 프롬프트 원문과 결과 이미지">
+<meta name="twitter:card" content="summary">
+<style>
+:root{
+  --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C; --dim:#6E665A;
+  --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8; --dim:#9A9184;
+         --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+}
+:root[data-theme="dark"]{ --bg:#17150F; --panel:#211E17; --line:#352F25; --ink:#E9E3D8;
+  --dim:#9A9184; --accent:#D97A4E; --code-bg:#0E0C09; --code-ink:#E9E3D8; --warn:#D2A44E; }
+:root[data-theme="light"]{ --bg:#F2ECE1; --panel:#FBF8F2; --line:#DED3C2; --ink:#22201C;
+  --dim:#6E665A; --accent:#A8502E; --code-bg:#2A2723; --code-ink:#E9E3D8; --warn:#8A6116; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif;
+  line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:36px 18px 100px}
+.chbanner{margin:0 0 22px}
+.chbanner .kk,.chbanner .nm{display:none}
+h1{font-size:clamp(23px,5vw,31px);line-height:1.35;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(18px,4vw,22px);margin:50px 0 14px;padding-top:22px;
+   border-top:1px solid var(--line);letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:16.5px;margin:30px 0 10px;color:var(--accent)}
+h4{font-size:15.5px;margin:22px 0 8px}
+p{margin:14px 0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+blockquote{margin:18px 0;padding:12px 16px;background:var(--panel);
+  border-left:3px solid var(--accent);border-radius:0 8px 8px 0;color:var(--dim);font-size:15px}
+blockquote.warn{border-left-color:var(--warn)}
+ul,ol{padding-left:22px;margin:14px 0}
+li{margin:6px 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel);
+  border:1px solid var(--line);padding:1px 5px;border-radius:4px;word-break:break-all}
+.tw{overflow-x:auto;margin:18px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:340px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:600;color:var(--dim);white-space:nowrap}
+td code{background:transparent;border:0;padding:0}
+.codewrap{margin:18px 0;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.codebar{display:flex;justify-content:space-between;align-items:center;
+  background:var(--panel);padding:7px 12px;font-size:12.5px;color:var(--dim)}
+.len{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.copy{font:inherit;font-size:12.5px;cursor:pointer;border:1px solid var(--accent);
+  background:transparent;color:var(--accent);padding:5px 16px;border-radius:99px;
+  min-height:32px;transition:background .15s,color .15s}
+.copy:hover,.copy.done{background:var(--accent);color:#fff}
+pre{margin:0;background:var(--code-bg);color:var(--code-ink);padding:16px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+pre code{font-family:var(--mono);font-size:13px;line-height:1.62;background:transparent;
+  border:0;padding:0;white-space:pre;word-break:normal;color:inherit}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--dim)}
+@media (max-width:520px){ .wrap{padding:26px 14px 80px} pre code{font-size:12px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+<style>h1,h2,h3,p,li,td,th,blockquote{word-break:keep-all;overflow-wrap:anywhere}img{max-width:100%;height:auto;border-radius:10px}pre code{white-space:pre-wrap!important;word-break:break-word!important}</style>
+</head>
+<body>
+<div class="wrap">
+<div class="chbanner"><h1>사진 1장으로 비포/애프터 2컷, 글자까지 한 번에 — 프롬프트 원문</h1></div>
+<p>스레드에 올린 이미지를 실제로 만든 프롬프트 원문이에요. 그대로 붙여 넣으면 비슷한 결과가 나와요.</p>
+<h2>결과 이미지</h2>
+<figure><img src="result.jpg" alt="이 프롬프트로 나온 결과"><figcaption>이 프롬프트로 나온 결과</figcaption></figure>
+<h2>프롬프트 원문</h2>
+<div class="codewrap"><div class="codebar"><span class="len">844자</span><button class="copy" type="button" data-t="c0">복사</button></div><pre id="c0"><code>Vertical 3:4 before-and-after poster with two stacked panels joined at a clean horizontal seam, on a beige paper-textured background with a generous margin. TOP PANEL: a realistic photograph of a cozy Korean apartment living room with a fabric sofa, a low wooden coffee table, potted plants, a tall bookshelf and a large window, warm natural daylight, no people. BOTTOM PANEL: the exact same room with the exact same composition, camera angle and furniture positions, redrawn as a delicate watercolor illustration with soft brushstrokes, fine ink outlines and muted earthy colors on textured cream paper. In the bottom margin add one small handwritten-style caption reading exactly "같은 방, 더 포근한 날", centered, crisp and correctly spelled. No other text, no logos, no watermarks. Nostalgic editorial mood, high detail, advertising-quality finish.</code></pre></div>
+<h2>바꿔 쓰는 템플릿</h2>
+<p>대괄호 [ ] 칸만 내 것으로 바꾸고 나머지는 그대로 두세요.</p>
+<div class="codewrap"><div class="codebar"><span class="len">835자</span><button class="copy" type="button" data-t="c1">복사</button></div><pre id="c1"><code>Vertical 3:4 before-and-after poster with two stacked panels joined at a clean horizontal seam, on a beige paper-textured background with a generous margin. TOP PANEL: a realistic photograph of a cozy Korean apartment living room with a [소파 종류] sofa, a low wooden coffee table, potted plants, a tall bookshelf and a large window, warm natural daylight, no people. BOTTOM PANEL: the exact same room with the exact same composition, camera angle and furniture positions, redrawn as a delicate [그림 스타일] illustration with soft brushstrokes, fine ink outlines and muted [색감] colors on textured cream paper. In the bottom margin add one small handwritten-style caption reading exactly "[캡션 문구]", centered, crisp and correctly spelled. No other text, no logos, no watermarks. Nostalgic editorial mood, high detail, advertising-quality finish.</code></pre></div>
+<h2>안 될 때 처방표</h2>
+<div class="tw"><table><thead><tr><th>증상</th><th>원인</th><th>이렇게 고친다</th></tr></thead><tbody><tr><td>손가락 개수·모양이 이상해요</td><td>손은 겹치고 가려지는 부분이 많아 AI가 자주 틀려요</td><td>손이 작게 나오거나 가려지는 구도로 바꾸고, 그래도 이상하면 손 부분만 다시 생성(부분 수정)해요</td></tr><tr><td>그림 속 글자가 깨지거나 엉뚱한 글자가 생겨요</td><td>이미지 AI는 글자를 그림으로 그려서 철자가 틀리기 쉬워요</td><td>프롬프트에 "no text"를 넣어 글자 없이 뽑고, 글자는 캔바·포토샵 같은 편집 도구에서 따로 얹어요</td></tr><tr><td>실제 브랜드 로고가 들어가거나 비슷하게 나와요</td><td>학습한 유명 제품 모습을 그대로 따라 그려요</td><td>브랜드 이름을 빼고 "unbranded, no logo"를 넣어요. 상표가 보이는 결과물은 광고에 쓰지 않아요</td></tr><tr><td>원하는 비율(세로·가로)로 안 나오거나 잘려요</td><td>비율을 따로 정하지 않으면 도구 기본값(주로 정사각형)으로 나와요</td><td>도구의 비율 설정(예: 4:5, 9:16)을 먼저 고르고, 프롬프트에도 "vertical 4:5 composition"처럼 적어요</td></tr><tr><td>피부·제품이 플라스틱처럼 매끈하고 가짜 같아요</td><td>보정이 과한 사진을 흉내 내 질감이 사라져요</td><td>"natural texture, realistic photo"를 넣고 "glossy, perfect skin" 같은 말은 빼요</td></tr></tbody></table></div>
+<p>해보다 막히면 스레드 댓글로 물어봐 주세요.</p>
+<footer>@heitzz 스레드 댓글 자료입니다. 결과 이미지는 위 프롬프트로 실제 생성한 것입니다.</footer>
+</div>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){
+  b.addEventListener("click", function(){
+    var el = document.getElementById(b.dataset.t), txt = el.innerText;
+    function done(){ b.textContent="복사됨"; b.classList.add("done");
+      setTimeout(function(){ b.textContent="복사"; b.classList.remove("done"); }, 1600); }
+    function fallback(){
+      var ta=document.createElement("textarea"); ta.value=txt;
+      ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand("copy"); done(); }catch(e){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback);
+    else fallback();
+  });
+});
+</script>
+</body>
+</html>
